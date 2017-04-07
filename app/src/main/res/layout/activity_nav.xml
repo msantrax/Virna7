@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/background_light"
+    android:fitsSystemWindows="true"
+    android:clickable="false">
+
+    <FrameLayout
+        android:id= "@+id/ui_container"
+        android:layout_width = "600dp"
+        android:layout_height = "match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="right"
+        android:layout_margin="50dp" />
+
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:animateLayoutChanges="true"
+        android:layout_gravity="center"
+        android:id="@+id/canvasgrid"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:elevation="2dp">
+
+        <ImageButton
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="@dimen/canvas_widget_heigth"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+            android:layout_marginTop="@dimen/canvas_widget_margintop"
+            android:layout_marginRight="@dimen/canvas_widget_marginright"
+
+            android:layout_column="0"
+            android:layout_row="0"
+
+            android:id="@+id/canvasop"
+            android:onClick="CanvasClicked"
+
+            style="@style/Widget.AppCompat.Button"
+            android:background="@drawable/menubt_operations_selection"
+            android:translationX="560dp"
+            android:translationY="230dp"
+            />
+
+        <TextView
+            android:text="@string/canvas_operations_button"
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+
+            android:id="@+id/lbl_cv1"
+
+            android:layout_column="0"
+            android:layout_row="1"
+
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:typeface="sans"
+            android:hint="texto"
+            />
+
+        <ImageButton
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="@dimen/canvas_widget_heigth"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+            android:layout_marginTop="@dimen/canvas_widget_margintop"
+            android:layout_marginRight="@dimen/canvas_widget_marginright"
+
+            android:layout_column="1"
+            android:layout_row="0"
+
+            android:id="@+id/canvasbuild"
+            android:onClick="CanvasClicked"
+
+            style="@style/Widget.AppCompat.Button"
+            android:background="@drawable/menubt_build_selection"
+            android:translationX="280dp"
+            android:translationY="230dp"
+            />
+
+        <TextView
+            android:text="@string/canvas_build_button"
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+
+            android:id="@+id/lbl_cv2"
+
+            android:layout_column="1"
+            android:layout_row="1"
+
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:typeface="sans"
+            android:hint="texto"
+            />
+
+        <ImageButton
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="@dimen/canvas_widget_heigth"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+            android:layout_marginTop="@dimen/canvas_widget_margintop"
+            android:layout_marginRight="@dimen/canvas_widget_marginright"
+
+            android:layout_column="2"
+            android:layout_row="0"
+
+            android:id="@+id/canvassettings"
+            android:onClick="CanvasClicked"
+
+            style="@style/Widget.AppCompat.Button"
+            android:background="@drawable/menubt_settings_selection"
+            android:visibility="visible"
+            android:translationY="230dp"
+            />
+
+        <TextView
+            android:text="@string/canvas_settings_button"
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+
+            android:id="@+id/lbl_cv3"
+
+            android:layout_column="2"
+            android:layout_row="1"
+
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:typeface="sans"
+            android:hint="texto"
+            />
+
+        <ImageButton
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="@dimen/canvas_widget_heigth"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+            android:layout_marginTop="@dimen/canvas_widget_margintop"
+            android:layout_marginRight="@dimen/canvas_widget_marginright"
+
+            android:layout_column="0"
+            android:layout_row="2"
+
+            android:id="@+id/canvasservice"
+            android:onClick="CanvasClicked"
+
+            style="@style/Widget.AppCompat.Button"
+            android:background="@drawable/menubt_service_selection"
+            android:translationX="560dp"
+            />
+
+        <TextView
+            android:text="@string/canvas_services_button"
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+
+            android:id="@+id/lbl_cv4"
+
+            android:layout_column="0"
+            android:layout_row="3"
+
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:typeface="sans"
+            android:hint="texto"
+            />
+
+        <ImageButton
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="@dimen/canvas_widget_heigth"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+            android:layout_marginTop="@dimen/canvas_widget_margintop"
+            android:layout_marginRight="@dimen/canvas_widget_marginright"
+
+            android:layout_column="1"
+            android:layout_row="2"
+
+            android:id="@+id/canvashelp"
+            android:onClick="CanvasClicked"
+
+            style="@style/Widget.AppCompat.Button"
+            android:background="@drawable/menubt_help_selection"
+            android:translationX="280dp"
+            />
+
+        <TextView
+            android:text="@string/canvas_help_button"
+            android:layout_width="@dimen/canvas_widget_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/canvas_widget_marginleft"
+
+            android:id="@+id/lbl_cv5"
+
+            android:layout_column="1"
+            android:layout_row="3"
+
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:typeface="sans"
+            android:hint="texto"
+            android:gravity="center_horizontal" />
+
+
+    </GridLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

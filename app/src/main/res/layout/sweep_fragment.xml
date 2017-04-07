@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:id="@+id/cl_sweep"
+    android:background="@android:color/background_light">
+
+    <TextView
+        android:text="Serviços do Braço Oscilante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textAlignment="gravity"
+        android:textStyle="normal|bold"
+        android:textSize="32sp"
+        android:gravity="center_horizontal"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.11" />
+
+    <RadioButton
+        android:text="Sensor Interno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_inner_sensor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="40dp"
+        android:clickable="false" />
+
+    <RadioButton
+        android:text="Sensor Externo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_outer_sensor"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/cb_inner_sensor"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cb_inner_sensor"
+        android:clickable="false" />
+
+    <RadioButton
+        android:text="Calibrado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_park_position"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/cb_outer_sensor"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cb_outer_sensor"
+        android:clickable="false" />
+
+    <TextView
+        android:text="Limite Interno"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_sweep_innner"
+        android:layout_marginStart="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="40dp"
+        android:layout_width="120dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:id="@+id/sk_sweep_inner"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toRightOf="@+id/lb_sweep_innner"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_sweep_innner"
+        app:layout_constraintRight_toLeftOf="@+id/ed_sweep_inner"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/ed_sweep_inner"
+        android:layout_width="51dp"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_mcalib"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_sweep_innner" />
+
+    <TextView
+        android:text="Limite Externo"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_sweep_outer"
+        android:layout_marginStart="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="40dp"
+        android:layout_width="120dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_sweep_innner" />
+
+    <SeekBar
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:id="@+id/sk_sweep_outer"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toRightOf="@+id/lb_sweep_outer"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_sweep_outer"
+        app:layout_constraintRight_toLeftOf="@+id/ed_sweep_outer"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/ed_sweep_outer"
+        android:layout_width="51dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sk_sweep_outer"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_mcalib" />
+
+
+
+    <TextView
+        android:text="Varredura do Oscilante"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servo_mcalib"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_sweep_innner"
+        android:gravity="center"
+        android:background="?android:attr/actionModeBackground"
+        app:layout_constraintBottom_toTopOf="@+id/lb_sweep_innner"
+        android:layout_marginBottom="24dp"
+        android:layout_width="600dp" />
+
+    <TextView
+        android:text="Posição Atual :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_sweep_position"
+        app:layout_constraintBottom_toBottomOf="@+id/cb_park_position"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/tv_delta"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp" />
+
+    <TextView
+        android:text="Operações"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_operations"
+        android:layout_marginEnd="88dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="88dp"
+        android:layout_width="300dp"
+        android:gravity="center"
+        android:background="?android:attr/actionModeBackground"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:text="Habilitar"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:id="@+id/sw_sweep_enable"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_operations"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_operations"
+        app:layout_constraintRight_toRightOf="@+id/lb_operations"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:id="@+id/sp_sweep_direction"
+        android:entries="@array/sweep_direction"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_operations"
+        app:layout_constraintRight_toRightOf="@+id/lb_operations"
+        app:layout_constraintTop_toBottomOf="@+id/sw_sweep_enable"
+        tools:listitem="@layout/sweep_fragment"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:background="@android:drawable/spinner_background"
+        android:layout_marginTop="32dp" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/ed_sweep_steps"
+        android:layout_width="60dp"
+        android:text="1000"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="@+id/sp_sweep_direction"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/sp_sweep_direction" />
+
+    <Button
+        android:text="Enviar Pulsos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_sweep_pulses"
+        app:layout_constraintBottom_toBottomOf="@+id/ed_sweep_steps"
+        app:layout_constraintRight_toRightOf="@+id/lb_operations" />
+
+    <Spinner
+        android:layout_height="48dp"
+        android:id="@+id/sp_sweep_scanvel"
+        android:entries="@array/sweep_speed_titles"
+        android:background="@android:drawable/spinner_background"
+        android:layout_width="151dp"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_sweep_innner"
+        app:layout_constraintTop_toBottomOf="@+id/lb_sweep_outer"
+        android:layout_marginTop="8dp" />
+
+    <Switch
+        android:text="Habilitar Varredura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sw_sweep_scanenable"
+        android:layout_marginStart="88dp"
+        app:layout_constraintLeft_toRightOf="@+id/sp_sweep_scanvel"
+        android:layout_marginLeft="88dp"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_mcalib"
+        app:layout_constraintHorizontal_bias="0.93"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_sweep_outer"
+        android:checked="false"
+        android:onClick="ScanEnableClick" />
+
+    <TextView
+        android:text="Situação dos Sensores"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_sensorstatus"
+        app:layout_constraintBottom_toTopOf="@+id/cb_inner_sensor"
+        android:layout_marginBottom="8dp"
+        android:background="?android:attr/actionModeBackground"
+        app:layout_constraintLeft_toLeftOf="@+id/cb_inner_sensor"
+        app:layout_constraintRight_toRightOf="@+id/tv_delta" />
+
+    <TextView
+        android:text="56%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_delta"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_sweep_position"
+        android:textStyle="normal|bold"
+        app:layout_constraintRight_toRightOf="@+id/lb_operations" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/ed_sweep_goto"
+        android:layout_width="60dp"
+        android:text="45"
+        android:gravity="center"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/bt_sweep_goto"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_sweep_goto" />
+
+    <TextView
+        android:text="Comandos de Movimento"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_sweep_move"
+        android:gravity="center"
+        android:background="?android:attr/actionModeBackground"
+        android:layout_width="600dp"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_sweep_innner"
+        app:layout_constraintTop_toBottomOf="@+id/sp_sweep_scanvel" />
+
+    <Button
+        android:text="Ir para Posição"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_sweep_goto"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_sweep_innner"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_sweep_move" />
+
+    <TextView
+        android:text="% do centro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_sweep_goto1"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_sweep_move"
+        app:layout_constraintBottom_toBottomOf="@+id/ed_sweep_goto"
+        app:layout_constraintVertical_bias="0.52"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/ed_sweep_goto"
+        android:layout_marginLeft="8dp" />
+
+    <Button
+        android:text="Calibrar Oscilante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_sweep_park"
+        app:layout_constraintRight_toRightOf="@+id/lb_sweep_move"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_sweep_goto" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/ed_sweep_stepsperiod"
+        app:layout_constraintRight_toLeftOf="@+id/bt_sweep_pulses"
+        android:text="5000"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@+id/lb_sweep_stepsperiod"
+        app:layout_constraintBottom_toBottomOf="@+id/ed_sweep_steps" />
+
+    <TextView
+        android:text="at"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_sweep_stepsperiod"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@+id/ed_sweep_steps"
+        app:layout_constraintBottom_toBottomOf="@+id/ed_sweep_steps"
+        app:layout_constraintTop_toTopOf="@+id/ed_sweep_steps"
+        app:layout_constraintVertical_bias="0.58000004" />
+
+
+</android.support.constraint.ConstraintLayout>

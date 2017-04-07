@@ -1,0 +1,91 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="-11.1102432"
+        android:key="@string/pref_mon_k_lvdta0"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_mon_t_lvdta0" />
+
+    <EditTextPreference
+        android:defaultValue="0.00032752"
+        android:key="@string/pref_mon_k_lvdta1"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_mon_t_lvdta1" />
+
+    <EditTextPreference
+        android:defaultValue="0"
+        android:key="@string/pref_mon_k_lvdta2"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_mon_t_lvdta2" />
+
+
+
+    <EditTextPreference
+        android:defaultValue="0"
+        android:key="@string/pref_mon_k_lvdtmin"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_mon_t_lvdtmin" />
+
+
+    <EditTextPreference
+        android:defaultValue="65000"
+        android:key="@string/pref_mon_k_lvdtmax"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_mon_t_lvdtmax" />
+
+
+
+
+    <EditTextPreference
+        android:defaultValue="0"
+        android:key="@string/pref_mon_k_lvdtoffset"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_mon_t_lvdtoffset" />
+
+
+    <EditTextPreference
+        android:defaultValue="1"
+        android:key="@string/pref_mon_k_lvdtslope"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_mon_t_lvdtslope" />
+
+
+    <EditTextPreference
+        android:defaultValue="0"
+        android:key="@string/pref_mon_k_lvdtinterpolator"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_mon_t_lvdtinterpolator" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/pref_mon_k_lvdtuserecal"
+        android:summary="@string/pref_mon_d_userecal"
+        android:title="@string/pref_mon_t_userecal" />
+
+
+
+</PreferenceScreen>

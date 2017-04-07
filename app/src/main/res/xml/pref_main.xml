@@ -1,0 +1,105 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_main_k_autenticate"
+        android:summary= "@string/pref_main_t_autenticate"
+        android:title="@string/pref_main_d_autenticate" />
+
+    <EditTextPreference
+        android:defaultValue="20"
+        android:key="@string/pref_main_k_platespeed"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_main_t_platespeed" />
+
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/sweep_type_titles"
+        android:entryValues="@array/sweep_type_values"
+        android:key="@string/pref_main_k_scantype"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_main_t_scantype" />
+
+    <EditTextPreference
+        android:defaultValue="20"
+        android:key="@string/pref_main_k_scaninner"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_main_t_scaninner" />
+
+    <EditTextPreference
+        android:defaultValue="80"
+        android:key="@string/pref_main_k_scanouter"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_main_t_scanouter" />
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/sweep_speed_titles"
+        android:entryValues="@array/sweep_speed_values"
+        android:key="@string/pref_main_k_scanvel"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_sweep_t_scanspeed" />
+
+    <EditTextPreference
+        android:defaultValue="40"
+        android:key="@string/pref_main_k_scanposition"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_main_t_scanposition" />
+
+    <EditTextPreference
+        android:defaultValue="0"
+        android:key="@string/pref_main_k_wg20vel"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_main_t_wg20vel" />
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/wg20_direction_titles"
+        android:entryValues="@array/wg20_direction_values"
+        android:key="@string/pref_main_k_wg20dir"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_main_t_wg20dir" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/pref_main_k_useperiod"
+        android:summary="@string/pref_main_d_useperiod"
+        android:title="@string/pref_main_t_useperiod" />
+
+    <EditTextPreference
+        android:defaultValue="45"
+        android:key="@string/pref_main_k_defperiod"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_main_t_defperiod" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/pref_main_k_usedrum"
+        android:summary="@string/pref_main_d_usedrum"
+        android:title="@string/pref_main_t_usedrum" />
+
+
+
+
+</PreferenceScreen>

@@ -1,0 +1,271 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context=".RunActivity"
+    android:id="@+id/content_main"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.Light"
+    android:layout_width="match_parent"
+    android:background="@android:color/holo_blue_bright"
+    android:fitsSystemWindows="true"
+    >
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/run_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Title"
+        app:title="PM5 - Vale - Operações"
+        app:titleTextColor="?android:attr/colorBackground"
+        app:logo="@mipmap/acp_launcher" />
+
+
+    <ImageView
+        android:layout_width="60dp"
+        app:srcCompat="@drawable/menubt_operations_selection"
+        android:id="@+id/iv_pm5icon"
+        app:layout_constraintTop_toTopOf="@+id/run_toolbar"
+        app:layout_constraintRight_toRightOf="@+id/run_toolbar"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_popup_sync"
+        android:id="@+id/ib_sync"
+        app:layout_constraintRight_toLeftOf="@+id/iv_pm5icon"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintTop_toTopOf="@+id/run_toolbar"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:text="Programa :"
+        android:layout_width="wrap_content"
+        android:id="@+id/lb_program"
+        android:clickable="false"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Material.Display1"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:gravity="left"
+        android:textSize="30sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/run_toolbar" />
+
+
+    <FrameLayout
+        android:id="@+id/fm_time"
+        android:layout_below="@+id/lb_program"
+        android:layout_alignLeft="@+id/lb_program"
+        android:layout_alignStart="@+id/lb_program"
+        android:layout_width="651dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_program"
+        app:layout_constraintLeft_toLeftOf="@+id/fm_cvex">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/timer_backgroung"
+            android:background="@drawable/stamp3" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timer_icon_action"
+            android:background="@drawable/clock1"
+            android:layout_marginLeft="600dp"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timer_message"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="30dp"
+            android:textStyle="normal|bold"
+            android:textSize="24sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_plot"
+        android:layout_width="620dp"
+        android:layout_height="251dp"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/fm_cvex">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_plotbg"
+            android:background="@drawable/grafbg" />
+
+        <com.androidplot.xy.XYPlot
+            style="@style/OpusGraf.Light"
+            android:id="@+id/wplot"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="610dp"
+            android:layout_height="240dp" />
+
+    </FrameLayout>
+
+    <Button
+        android:text="Operações"
+        android:id="@+id/bt_operations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="48sp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/fl_plot"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
+
+    <FrameLayout
+        android:id="@+id/fm_cvex"
+        android:layout_below="@+id/lb_program"
+        android:layout_alignLeft="@+id/lb_program"
+        android:layout_alignStart="@+id/lb_program"
+        android:layout_width="651dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/fm_time"
+        android:layout_height="91dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cvex_backgroung"
+            android:background="@drawable/stamp3" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cvexgauge"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/lgauge2"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:text="1.27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gcvex"
+            android:layout_marginLeft="480dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/gpt"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="232dp"
+            android:layout_height="40dp"
+            android:background="@drawable/lgauge_ponteiro" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_marginLeft="590dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/convex1" />
+    </FrameLayout>
+
+    <TextView
+        android:text="Desbaste 5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="30sp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toRightOf="@+id/lb_program"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_program"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="Fase "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        android:layout_marginStart="72dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView"
+        android:layout_marginLeft="72dp" />
+
+    <TextView
+        android:text="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView3"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3" />
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/gl"
+
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/bt_operations"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="31dp"
+        app:layout_constraintLeft_toRightOf="@+id/fl_plot"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="11dp"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/run_toolbar"
+        android:layout_marginTop="40dp">
+    </TableLayout>
+
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+
+
+

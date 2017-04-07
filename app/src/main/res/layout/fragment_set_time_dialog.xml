@@ -1,0 +1,72 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context=".SetValDialogFragment"
+    android:layout_centerInParent="false"
+    android:layout_gravity="center_horizontal|center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/cl_set_time"
+    android:theme="@style/AppTheme">
+
+
+    <TimePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timePicker"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lb_dur"
+        android:headerBackground="@color/ap_black"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp" />
+
+    <TextView
+        android:text="Duração Estimada da Tarefa :  "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_dur"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_dur"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toRightOf="@+id/lb_dur"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_dur" />
+
+    <CheckBox
+        android:text="Periodo"
+        android:layout_width="173dp"
+        android:id="@+id/userelativetime"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toRightOf="@+id/timePicker"
+        android:layout_marginLeft="32dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_presenttime"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:text="12:36:27"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+
+
+</android.support.constraint.ConstraintLayout>

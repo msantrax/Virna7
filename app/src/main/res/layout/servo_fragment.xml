@@ -1,0 +1,407 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.opus.virna7.ServoFragment"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:id="@+id/cl_servo"
+    android:background="@android:color/background_light">
+
+
+    <TextView
+        android:text="Serviços do Servo da Placa de Desbaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/servo_lb_header"
+        android:textAlignment="gravity"
+        android:textStyle="normal|bold"
+        android:textSize="32sp"
+        android:gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:text="Calibração do Motor"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servo_mcalib"
+        android:gravity="center"
+        android:background="?android:attr/actionModeBackground"
+        android:layout_width="251dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="48dp" />
+
+    <TextView
+        android:text="A0 :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_lvdt_mta0"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_servo_mcalib"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_servo_mcalib" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/et_servo_mta0"
+        android:layout_width="120dp"
+        android:textAlignment="textEnd"
+        android:text="19.081877"
+        android:gravity="center_vertical|end"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_lvdt_mta0"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_mcalib" />
+
+    <TextView
+        android:text="A1 :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_lvdt_mta1"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_lvdt_mta0"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_servo_mcalib" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/et_servo_mta1"
+        android:layout_width="120dp"
+        android:textAlignment="textEnd"
+        android:text="1.38616"
+        android:gravity="center_vertical|end"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_mcalib"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_lvdt_mta1" />
+
+    <TextView
+        android:text="A2 :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_lvdt_mta2"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_lvdt_mta1"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_servo_mcalib" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/et_mon_lvdta2"
+        android:layout_width="120dp"
+        android:textAlignment="textEnd"
+        android:text="-0.00597427"
+        android:gravity="center_vertical|end"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_mcalib"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_lvdt_mta2" />
+
+
+
+    <TextView
+        android:text="Parametros PID"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servo_pid"
+        android:gravity="center"
+        android:background="?android:attr/actionModeBackground"
+        android:layout_width="0dp"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/et_mon_lvdta2"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_servo_mcalib"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/lb_lvdt_mta2"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:text="Proporcional :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_mon_lvdtmin"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_servo_pid"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_servo_pid" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/et_servo_pidp"
+        android:layout_width="120dp"
+        android:textAlignment="textEnd"
+        android:text="-0.201387"
+        android:gravity="center_vertical|end"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_pid"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_mon_lvdtmin" />
+
+    <TextView
+        android:text="Integral :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_mon_lvdtmax"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_servo_pid"
+        app:layout_constraintTop_toBottomOf="@+id/lb_mon_lvdtmin"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/et_servo_pidi"
+        android:layout_width="120dp"
+        android:textAlignment="textEnd"
+        android:text="-0.50307"
+        android:gravity="center_vertical|end"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_pid"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_mon_lvdtmax" />
+
+    <TextView
+        android:text="Derivada :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servo_pidd"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_mon_lvdtmax"
+        app:layout_constraintLeft_toLeftOf="@+id/lb_servo_pid" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal|numberSigned"
+        android:ems="10"
+        android:id="@+id/et_servo_pidd"
+        android:layout_width="120dp"
+        android:textAlignment="textEnd"
+        android:text="0.1"
+        android:gravity="center_vertical|end"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_servo_pidd"
+        app:layout_constraintRight_toRightOf="@+id/lb_servo_pid" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="33dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="33dp" />
+
+    <TextView
+        android:text="Comando do Servo"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_mon_wg20"
+        android:background="?android:attr/actionModeBackground"
+        android:gravity="center"
+        android:layout_width="651dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        android:layout_marginTop="64dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:text="Modulação :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_mon_wg20vel"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_mon_wg20" />
+
+    <SeekBar
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/sk_pwm"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/lb_mon_wg20vel"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/et_mon_wg20vel"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_mon_wg20vel" />
+
+    <EditText
+        android:layout_width="51dp"
+        android:layout_height="47dp"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/et_mon_wg20vel"
+        android:text="0"
+        android:gravity="bottom|center"
+        app:layout_constraintRight_toLeftOf="@+id/sw_mon_wg20enable"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_mon_wg20vel" />
+
+    <Switch
+        android:text="Acionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sw_mon_wg20enable"
+        app:layout_constraintRight_toRightOf="@+id/lb_mon_wg20"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_mon_wg20vel" />
+
+
+    <TextView
+        android:text="Velocidade :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servovel"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        android:layout_marginTop="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_mon_wg20" />
+
+    <SeekBar
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/sk_servovel"
+        app:layout_constraintRight_toLeftOf="@+id/et_servovel"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_servovel"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/lb_servovel"
+        android:layout_marginLeft="8dp" />
+
+    <EditText
+        android:layout_width="51dp"
+        android:layout_height="47dp"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/et_servovel"
+        android:text="0"
+        android:gravity="bottom|center"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_servovel"
+        app:layout_constraintRight_toLeftOf="@+id/sw_servovel"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
+
+    <Switch
+        android:text="Acionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sw_servovel"
+        app:layout_constraintRight_toRightOf="@+id/lb_mon_wg20"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_servovel" />
+
+    <Button
+        android:text="Atualizar Param."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_loadParam"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_servovel" />
+
+    <Button
+        android:text="Reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_reset"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_loadParam"
+        android:layout_marginStart="40dp"
+        app:layout_constraintLeft_toRightOf="@+id/bt_loadParam"
+        android:layout_marginLeft="40dp" />
+
+    <TextView
+        android:text="Situação dos parametros e Sensores"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servo_sensorstatus"
+        android:background="?android:attr/actionModeBackground"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/bt_loadParam"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintRight_toRightOf="@+id/lb_mon_wg20" />
+
+    <RadioButton
+        android:text="Enable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rb_mon_wg20present"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lb_servo_sensorstatus" />
+
+    <RadioButton
+        android:text="Falha no Driver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rb_servofault"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toRightOf="@+id/rb_mon_wg20present"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rb_mon_wg20present"
+        android:textColor="@android:color/holo_red_light" />
+
+    <TextView
+        android:text="Gamma :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servo_gamma"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/rb_mon_wg20present" />
+
+    <TextView
+        android:text="1902.87"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_servo_gamma"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_servo_gamma"
+        app:layout_constraintLeft_toRightOf="@+id/lb_servo_gamma"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp" />
+
+    <TextView
+        android:text="Velocidade :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servo_vel"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_servo_gamma"
+        app:layout_constraintLeft_toRightOf="@+id/tv_servo_gamma"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp" />
+
+    <TextView
+        android:text="0.00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_servo_vel"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/lb_servo_vel"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lb_servo_vel"
+        android:textSize="20sp" />
+
+    <TextView
+        android:text="RPM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lb_servovelrpm"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_servo_vel"
+        android:layout_marginStart="32dp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_servo_vel"
+        android:layout_marginLeft="32dp" />
+
+    <Switch
+        android:text="Habilitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sw_servo_enable"
+        app:layout_constraintRight_toRightOf="@+id/sw_servovel"
+        app:layout_constraintTop_toTopOf="@+id/bt_reset"
+        android:layout_marginTop="8dp" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,59 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="19.081877"
+        android:key="@string/pref_servo_k_transfera0"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_servo_t_transfera0" />
+
+    <EditTextPreference
+        android:defaultValue="1.38616"
+        android:key="@string/pref_servo_k_transfera1"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_servo_t_transfera1" />
+
+    <EditTextPreference
+        android:defaultValue="-0.00597427"
+        android:key="@string/pref_servo_k_transfera2"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_servo_t_transfera2" />
+
+    <EditTextPreference
+        android:defaultValue="-0.201387"
+        android:key="@string/pref_servo_k_pidp"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_servo_t_pidp" />
+
+    <EditTextPreference
+        android:defaultValue="-0.50307"
+        android:key="@string/pref_servo_k_pidi"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_servo_t_pidi" />
+
+    <EditTextPreference
+        android:defaultValue="0.1"
+        android:key="@string/pref_servo_k_pidd"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_servo_t_pidd" />
+
+
+
+</PreferenceScreen>

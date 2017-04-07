@@ -1,0 +1,265 @@
+<resources>
+    <string name="app_name">Virna7</string>
+
+    <string name="action_settings">Configurações</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="dlgmsg_wrongpwd">"Lamento mas o código de acesso digitado ( %s ) não existe no sistema.&lt;h4>O evento foi registrado como acesso não autorizado.&lt;/h4>"</string>
+    <string name="dlgmsg_admuser">"&lt;h2>Olá %s !!&lt;/h4>&lt;p>Como administrador voce terá acesso irrestrito ao sistema&lt;/p>"</string>
+    <string name="dlgmsg_guestuser">"&lt;h2>Seja Benvindo %s!!&lt;/h4>&lt;p>Como convidado seu acesso é restrito. Solicite o auxilio de um administrador caso necessário&lt;/p>"</string>
+    <string name="title_activity_nav">NavActivity</string>
+
+    <string name="canvas_operations_button">Operações</string>
+    <string name="canvas_build_button">Programação</string>
+    <string name="canvas_settings_button">Configuração</string>
+    <string name="canvas_services_button">Serviços</string>
+    <string name="canvas_help_button">Ajuda</string>
+
+    <string-array name="sweepalgos">
+        <item>Alpha</item>
+        <item>Beta</item>
+        <item>Gamma</item>
+        <item>Delta</item>
+    </string-array>
+
+    <string name="te_sweep_inner">56</string>
+    <string name="title_activity_support3">Virna 7 - Ferramentas de Suporte</string>
+    <string name="section_format">Opus Desenvolvimento: %1$d</string>
+
+    <!-- Support Fragments -->
+    <string-array name="sweep_direction">
+        <item>Para Fora</item>
+        <item>Para Dentro</item>
+    </string-array>
+
+    <string-array name="sweep_speed_titles">
+        <item>50 mm/seg</item>
+        <item>20 mm/seg</item>
+        <item>10 mm/seg</item>
+        <item>5 mm/seg</item>
+        <item>1 mm/seg</item>
+    </string-array>
+    <string-array name="sweep_speed_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="wg20_direction">
+        <item>Horário</item>
+        <item>Anti Horário</item>
+    </string-array>
+
+
+    <!--Virna preferences-->
+
+    <string name="title_activity_settings">Configurações</string>
+
+
+    <!--Main preferences-->
+    <string name="pref_header_main">Configuração Geral do Aplicativo</string>
+
+    <string name="pref_main_k_autenticate">pref.main.autenticate</string>
+    <string name="pref_main_d_autenticate">Autenticar Usuario</string>
+    <string name="pref_main_t_autenticate">Usar keypad para autenticar usuario</string>
+
+
+
+    <string name="pref_main_k_platespeed">pref.main.platespeed</string>
+    <string name="pref_main_t_platespeed">Velocidade da placa de desbaste</string>
+
+
+    <string-array name="sweep_type_titles">
+        <item>Varredura Fixa</item>
+        <item>Algoritmo Alpha</item>
+        <item>Algoritmo Beta</item>
+        <item>Algoritmo Gamma</item>
+        <item>Posição Definida</item>
+        <item>Oscilante Desabilitado</item>
+    </string-array>
+    <string-array name="sweep_type_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="pref_main_k_scantype">pref.main.scantype</string>
+    <string name="pref_main_t_scantype">Tipo de Varredura do Oscilante</string>
+
+
+    <string name="pref_main_k_scaninner">pref.main.scaninner</string>
+    <string name="pref_main_t_scaninner">Limite da varredura (interno)</string>
+    <string name="pref_main_k_scanouter">pref.main.scanouter</string>
+    <string name="pref_main_t_scanouter">Limite da varredura (externo)</string>
+    <string name="pref_main_k_scanvel">pref.main.scanvel</string>
+    <string name="pref_main_t_scanvel">Velocidade da varredura</string>
+    <string name="pref_main_k_scanposition">pref.main.scanposition</string>
+    <string name="pref_main_t_scanposition">Posição fixa do Oscilante</string>
+
+
+
+    <string-array name="wg20_direction_titles">
+        <item>Horário</item>
+        <item>Anti Horário</item>
+    </string-array>
+    <string-array name="wg20_direction_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="pref_main_k_wg20vel">pref.main.wg20vel</string>
+    <string name="pref_main_t_wg20vel">Velocidade do Jig de Polimento</string>
+    <string name="pref_main_k_wg20dir">pref.main.wg20dir</string>
+    <string name="pref_main_t_wg20dir">Direção do Jig de Polimento</string>
+
+    <string name="pref_main_k_useperiod">pref.main.useperiod</string>
+    <string name="pref_main_t_useperiod">Usar Período</string>
+    <string name="pref_main_d_useperiod">Ajuste a duração da tarefa por tempo relativo ao inicio</string>
+
+    <string name="pref_main_k_defperiod">pref.main.defperiod</string>
+    <string name="pref_main_t_defperiod">Período padrão da tarefa (em minutos)</string>
+
+    <string name="pref_main_k_usedrum">pref.main.usedrum</string>
+    <string name="pref_main_t_usedrum">Tambor de Abrasivo</string>
+    <string name="pref_main_d_usedrum">Ativar tambor de abrasivo no inicio da tarefa</string>
+
+
+
+    <!--Network preferences-->
+
+    <string name="pref_header_network">Rede Ethernet</string>
+
+    <string name="NETWORK">network.</string>
+
+    <string name="pref_net_k_ip">pref.network.antares_addr</string>
+    <string name="pref_net_t_ip">Endereço IP na rede do controlador Antares</string>
+
+    <string name="pref_net_k_port">pref.network.antares_port</string>
+    <string name="pref_net_t_port">Porta TCP/IP para comunicação</string>
+
+    <string name="pref_net_k_autologin">pref.network.autologin</string>
+    <string name="pref_net_t_doautologin">Conexão automática</string>
+    <string name="pref_net_d_doautologin">Identificar presença do controlador Antares</string>
+
+    <string name="pref_net_k_scanpooling">pref.network.scanpooling</string>
+    <string name="pref_net_t_scanpooling">Periodo entre varreduras na rede (em ms)</string>
+
+    <string name="pref_net_k_dostatuscallback">pref.network.dostatuscallback</string>
+    <string name="pref_net_t_dostatuscallback">Verificação de estado</string>
+    <string name="pref_net_d_dostatuscallback">Sempre verificar estado da conexão e recuperar variáveis</string>
+
+    <string name="pref_net_k_statuscallbackperiod">pref.network.statuscallbackperiod</string>
+    <string name="pref_net_t_statuscallbackperiod">Periodo entre as requisiçoes de dados das variáveis de controle (em ms)</string>
+
+    <string name="pref_net_t_setwifi">Conexão WIFI</string>
+    <string name="pref_net_d_setwifi">Configurar conexão WIFI</string>
+
+    <string name="pref_net_k_usehttp">pref.network.usehttp</string>
+    <string name="pref_net_t_usehttp">Permitir conexão com browsers no celular</string>
+    <string-array name="pref_net_usehttp_list_titles">
+        <item>Nunca</item>
+        <item>Somente para monitoramento</item>
+        <item>Somente para monitoramento (requerer permissão no painel)</item>
+        <item>Assume o controle da máquina (requer autenticação)</item>
+    </string-array>
+    <string-array name="pref_net_usehttp_list_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+
+    <string name="pref_header_sweep">Braço Oscilante</string>
+
+    <string name="pref_sweep_k_scaninner">pref.sweep.scaninner</string>
+    <string name="pref_sweep_t_scaninner">Limite inferior do scan</string>
+    <string name="pref_sweep_k_scanouter">pref.sweep.scanouter</string>
+    <string name="pref_sweep_t_scanouter">Limite superior do scan</string>
+
+    <string name="pref_sweep_k_scanspeed">pref.sweep.scanspeed</string>
+    <string name="pref_sweep_t_scanspeed">Velocidade da varredura</string>
+
+    <string name="pref_sweep_k_halfstep">pref.sweep.halfstep</string>
+    <string name="pref_sweep_t_halfstep">Half Step</string>
+    <string name="pref_sweep_d_halfstep">Preferir acionamento a meio passo</string>
+
+    <string name="pref_sweep_k_dampstart">pref.sweep.dampstart</string>
+    <string name="pref_sweep_t_dampstart">Amortecimento da aceleração</string>
+    <string name="pref_sweep_k_dampstop">pref.sweep.dampstop</string>
+    <string name="pref_sweep_t_dampstop">Amortecimento da frenagem</string>
+
+    <string name="pref_sweep_k_mapwindow">pref.sweep.mapwindow</string>
+    <string name="pref_sweep_t_mapwindow">Tamanho do mapa de passos</string>
+
+    <string name="pref_sweep_k_mapoffset">pref.sweep.mapoffset</string>
+    <string name="pref_sweep_t_mapoffset">Numero de passos fora do centro do mapa</string>
+
+    <string name="pref_sweep_k_mapprofile">pref.sweep.mapprofile</string>
+    <string name="pref_sweep_t_mapprofile">Perfil de aceleração</string>
+    <string name="pref_sweep_d_mapprofile">Permitir uso de perfil pré definido</string>
+
+    <string name="pref_sweep_k_scanfix">pref.sweep.scanfix</string>
+    <string name="pref_sweep_t_scanfix">Anti Derrapagem</string>
+    <string name="pref_sweep_d_scanfix">Usar algoritmo contra perda de pulsos</string>
+
+    <string name="pref_sweep_k_scanfixparkwindow">pref.sweep.scanfixparkwindow</string>
+    <string name="pref_sweep_t_scanfixparkwindow">Numero de passos da janela de Parking</string>
+
+    <string name="pref_sweep_k_scanfixerrorwindow">pref.sweep.scanfixerrorwindow</string>
+    <string name="pref_sweep_t_scanfixerrowindow">Numero max. de passos para erro</string>
+
+
+
+    <string name="pref_header_servo">Servo Motor</string>
+
+    <string name="pref_servo_k_transfera0">pref.servo.transfera0</string>
+    <string name="pref_servo_t_transfera0">Curva de transferencia do Motor (A0)</string>
+    <string name="pref_servo_k_transfera1">pref.servo.transfera1</string>
+    <string name="pref_servo_t_transfera1">Curva de transferencia do Motor (A1)</string>
+    <string name="pref_servo_k_transfera2">pref.servo.transfera2</string>
+    <string name="pref_servo_t_transfera2">Curva de transferencia do Motor (A2)</string>
+
+    <string name="pref_servo_k_pidp">pref.servo.pid</string>
+    <string name="pref_servo_t_pidp">Controlador PID - Fator Proporcional</string>
+    <string name="pref_servo_k_pidi">pref.servo.pii</string>
+    <string name="pref_servo_t_pidi">Controlador PID - Fator Integral</string>
+    <string name="pref_servo_k_pidd">pref.servo.pidd</string>
+    <string name="pref_servo_t_pidd">Controlador PID - Fator Derivada</string>
+
+
+
+    <string name="pref_header_monitor">Concavidade e Auxiliares</string>
+
+    <string name="pref_mon_k_lvdta0">pref.mon_lvdta0</string>
+    <string name="pref_mon_t_lvdta0">Curva de Calibração do LVDT (A0)</string>
+    <string name="pref_mon_k_lvdta1">pref.mon_lvdta1</string>
+    <string name="pref_mon_t_lvdta1">Curva de Calibração do LVDT (A1)</string>
+    <string name="pref_mon_k_lvdta2">pref.mon_lvdta2</string>
+    <string name="pref_mon_t_lvdta2">Curva de Calibração do LVDT (A2)</string>
+
+    <string name="pref_mon_k_lvdtmin">pref.mon_lvdtmin</string>
+    <string name="pref_mon_t_lvdtmin">Limite minimo do LVDT</string>
+    <string name="pref_mon_k_lvdtmax">pref.mon_lvdtmax</string>
+    <string name="pref_mon_t_lvdtmax">LImite Maximo do LVDT</string>
+
+    <string name="pref_mon_k_lvdtoffset">pref.mon_lvdtoffset</string>
+    <string name="pref_mon_t_lvdtoffset">Recal - Translacional do LVDT</string>
+    <string name="pref_mon_k_lvdtslope">pref.mon_lvdtslope</string>
+    <string name="pref_mon_t_lvdtslope">Recal - Rotacional do LVDT</string>
+
+    <string name="pref_mon_k_lvdtinterpolator">pref.mon_lvdtinterpolator</string>
+    <string name="pref_mon_t_lvdtinterpolator">Amortecimento do medidor em ms</string>
+
+    <string name="pref_mon_k_lvdtuserecal">pref.mon.lvdtuserecal</string>
+    <string name="pref_mon_t_userecal">Usar Recal</string>
+    <string name="pref_mon_d_userecal">Usar algoritmo de recalibração do LVDT</string>
+
+
+
+</resources>

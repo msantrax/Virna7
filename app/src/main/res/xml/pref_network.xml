@@ -1,0 +1,64 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="192.168.0.110"
+        android:key="@string/pref_net_k_ip"
+        android:inputType="textUri"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_net_t_ip" />
+
+    <EditTextPreference
+        android:defaultValue="10887"
+        android:key="@string/pref_net_k_port"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_net_t_port" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/pref_net_k_autologin"
+        android:summary="@string/pref_net_d_doautologin"
+        android:title="@string/pref_net_t_doautologin" />
+
+    <EditTextPreference
+        android:defaultValue="3000"
+        android:key="@string/pref_net_k_scanpooling"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_net_t_scanpooling" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_net_k_dostatuscallback"
+        android:summary="@string/pref_net_d_dostatuscallback"
+        android:title="@string/pref_net_t_dostatuscallback" />
+
+    <EditTextPreference
+        android:defaultValue="500"
+        android:key="@string/pref_net_k_statuscallbackperiod"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_net_t_statuscallbackperiod" />
+
+    <Preference android:title="@string/pref_net_t_setwifi">
+        <intent android:action="android.settings.WIFI_SETTINGS" />
+    </Preference>
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/pref_net_usehttp_list_titles"
+        android:entryValues="@array/pref_net_usehttp_list_values"
+        android:key="@string/pref_net_k_usehttp"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_net_t_usehttp" />
+
+</PreferenceScreen>

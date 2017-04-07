@@ -1,0 +1,107 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="20"
+        android:key="@string/pref_sweep_k_scaninner"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_sweep_t_scaninner" />
+
+    <EditTextPreference
+        android:defaultValue="80"
+        android:key="@string/pref_sweep_k_scanouter"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_sweep_t_scanouter" />
+
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/sweep_speed_titles"
+        android:entryValues="@array/sweep_speed_values"
+        android:key="@string/pref_sweep_k_scanspeed"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_sweep_t_scanspeed" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_sweep_k_halfstep"
+        android:summary="@string/pref_sweep_d_halfstep"
+        android:title="@string/pref_sweep_t_halfstep" />
+
+    <EditTextPreference
+        android:defaultValue="0.7"
+        android:key="@string/pref_sweep_k_dampstart"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_sweep_t_dampstart" />
+
+    <EditTextPreference
+        android:defaultValue="0.85"
+        android:key="@string/pref_sweep_k_dampstop"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_sweep_t_dampstop" />
+
+    <EditTextPreference
+        android:defaultValue="4000"
+        android:key="@string/pref_sweep_k_mapwindow"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_sweep_t_mapwindow" />
+
+    <EditTextPreference
+        android:defaultValue="-54"
+        android:key="@string/pref_sweep_k_mapoffset"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_sweep_t_mapoffset" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_sweep_k_mapprofile"
+        android:summary="@string/pref_sweep_d_mapprofile"
+        android:title="@string/pref_sweep_t_mapprofile" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_sweep_k_scanfix"
+        android:summary="@string/pref_sweep_d_scanfix"
+        android:title="@string/pref_sweep_t_scanfix" />
+
+    <EditTextPreference
+        android:defaultValue="72"
+        android:key="@string/pref_sweep_k_scanfixparkwindow"
+        android:inputType="number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_sweep_t_scanfixparkwindow" />
+
+    <EditTextPreference
+        android:defaultValue="12"
+        android:key="@string/pref_sweep_k_scanfixerrorwindow"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_sweep_t_scanfixerrowindow" />
+
+
+
+
+
+
+</PreferenceScreen>
