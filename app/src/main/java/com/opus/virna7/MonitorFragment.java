@@ -403,17 +403,17 @@ public class MonitorFragment extends Fragment implements SeekBar.OnSeekBarChange
 
         if (parent.getId() == R.id.sp_mon_wg20vel){
             Log.d(Support3.TAG, "Adjusting wg20 direction " + position);
-            AcpMessage m = new AcpMessage(true, 4, 4,"");
-            m.setCmd(EtherService.comand_map.get("WG20_SETDIR" ));
-            m.setArg(position);
-            m.setMessage("0");
-            etherservice.sendMessage(m);
+//            AcpMessage m = new AcpMessage(true, 4, 4,"");
+//            m.setCmd(EtherService.comand_map.get("WG20_SETDIR" ));
+//            m.setArg(position);
+//            m.setMessage("0");
+//            etherservice.sendMessage(m);
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Log.d(Support3.TAG, "nOTHING SELECTED");
+        Log.d(Support3.TAG, "NOTHING SELECTED");
     }
 
 

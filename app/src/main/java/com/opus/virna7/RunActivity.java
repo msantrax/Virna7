@@ -442,7 +442,7 @@ public class RunActivity extends AppCompatActivity implements
     public void updateGauges() {
 
         if (!tlock) {
-            Log.i(TAG, "Updating gauges");
+            //Log.i(TAG, "Updating gauges");
             tlock=true;
 
             // Do UI refresh

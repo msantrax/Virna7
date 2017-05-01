@@ -167,6 +167,16 @@ public class Virna7 extends AppCompatActivity {
     }
 
 
+    public class BootUpReceiver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Intent target = new Intent(context, Virna7.class);
+            target.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(target);
+        }
+    }
+
     // USB Service tasks and control ===============================================================
 
     private ServiceConnection connection = new ServiceConnection() {

@@ -26,6 +26,7 @@ public class SweepFragment extends Fragment implements SeekBar.OnSeekBarChangeLi
 
     private EtherService etherservice;
     private SharedPreferences preferences ;
+    private static Support3 parent;
 
     private RadioButton cb_inner;
     private SeekBar sk_inner;
@@ -304,4 +305,6 @@ public class SweepFragment extends Fragment implements SeekBar.OnSeekBarChangeLi
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) { }
+
+
 }

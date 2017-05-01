@@ -45,7 +45,7 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
     public static enum CMDS {LOADSTATE, RECOVERERROR, UPDATEVALUES};
 
     public static int port = 10887;
-    public static String host = "192.168.0.110";
+    public static String host = "192.168.1.110";
 
     public boolean callback_enabled = false;
     public int callbacklag = 500;
@@ -71,6 +71,8 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
         autoattach = preferences.getBoolean(getString(R.string.pref_net_k_autologin), false);
         callback_enabled = preferences.getBoolean(getString(R.string.pref_net_k_dostatuscallback), false);
         callbacklag = Integer.valueOf(preferences.getString(getString(R.string.pref_net_k_statuscallbackperiod),"500"));
+        host = preferences.getString(getString(R.string.pref_net_k_ip),"192.168.0.110");
+        port = Integer.valueOf(preferences.getString(getString(R.string.pref_net_k_port),"10887"));
     }
 
 
@@ -384,6 +386,8 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
         private int msize=0;
         private int retry=0;
 
+        private int traffic_timeout;
+
         Socket clientSock;
 
         public NetThread(BlockingQueue<SMTraffic> tqueue) {
@@ -421,6 +425,7 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
                             //port = Integer.valueOf(tf_port.getText());
                             //host = tf_hostname.getText();
                             try {
+
                                 clientSock = new Socket(host, port);
                                 //int recsize = clientSock.getReceiveBufferSize();
                                 //boolean kalive = clientSock.getKeepAlive();
@@ -511,6 +516,7 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
                                 //Log.d(TAG,  "Sending   Status @ " + m.getTimestamp());
                                 mesptr=0;
                                 retry = 4;
+                                traffic_timeout= 2000;
                                 //TODO : adjust msize
                                 states_stack.push(STATES.NETLISTEN);
                             } catch (IOException ex) {
@@ -557,6 +563,26 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
                                             Log.d(TAG, "Unable to assemble message");
                                             states_stack.push(STATES.DETACH);
                                         }
+                                    }
+                                }
+                                else{
+                                    traffic_timeout--;
+                                    Log.d(TAG, "Timeout = " + traffic_timeout);
+                                    if (traffic_timeout < 0){
+                                        //if (autoattach) {
+                                            try {
+                                                if (isAttached() && (!clientSock.isClosed())){
+                                                    clientSock.close();
+                                                }
+                                                Log.d(TAG, "Client detached from server");
+                                                setAttached(false);
+                                                states_stack.push(STATES.ATTACH);
+                                            } catch (IOException ex) {
+                                                Log.d(TAG, "Unable to detach from server ? " + ex.getMessage());
+                                                states_stack.push(STATES.IDLE);
+                                            }
+                                        //}
+                                        traffic_timeout = 2000;
                                     }
                                 }
                             } catch (IOException ex) {
@@ -606,7 +632,7 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
                     case RECVU:
                         AcpMessage rm = new AcpMessage(true, message);
                         if (rm.getCmd()== 20){
-                            //Log.d(TAG, "Receiving Status @ recvu : " + rm.toString());
+                            Log.d(TAG, "Receiving Status @ recvu : " + rm.toString());
                             if (broadcast_rawstatus){
                                 broadcastMessage("ACPMESSAGE", rm);
                             }

@@ -99,6 +99,7 @@ public class Support3 extends AppCompatActivity {
         if (etherserviceBinder == null) {
             startEtherService();
         }
+
     }
 
     public void onPause() {
@@ -107,7 +108,6 @@ public class Support3 extends AppCompatActivity {
 
         Intent intent = getIntent();
         Log.d(TAG, "Pausing Run Task DUE : " + intent);
-
         unregisterReceiver(intentReceiver);
         if (etherserviceBinder != null) {
             //unbindService(connection);
@@ -147,8 +147,6 @@ public class Support3 extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-
-
     @Override
     public void onStart() {
         super.onStart();
@@ -161,13 +159,18 @@ public class Support3 extends AppCompatActivity {
 
 
     // Service Binding ===============================================================================================
+
     private ServiceConnection connection = new ServiceConnection() {
 
         public void onServiceConnected(ComponentName className, IBinder service) {
             Log.d(TAG, "Support is binding to EtherService");
             etherserviceBinder = ((EtherService.EtherBinder) service).getService();
             startService(i);
+
+            //servofrag.bindService(etherserviceBinder);
             //sweepfrag.bindService(etherserviceBinder);
+            //monitorfrag.bindService(etherserviceBinder);
+
             etherserviceBinder.readVar(EtherService.comand_map.get("NET_ATTACHED"));
             etherserviceBinder.readVar(EtherService.comand_map.get("NET_CALLBACKENABLED"));
 
@@ -176,7 +179,6 @@ public class Support3 extends AppCompatActivity {
             etherserviceBinder = null;
         }
     };
-
 
     private void startEtherService() {
         Log.d(TAG, "Support is starting Ether Service -->");
@@ -228,6 +230,13 @@ public class Support3 extends AppCompatActivity {
         }
     };
 
+    public void bindFragments(){
+        sweepfrag.bindService(etherserviceBinder);
+        servofrag.bindService(etherserviceBinder);
+        monitorfrag.bindService(etherserviceBinder);
+    }
+
+
     private void updateUI(){
 
         runOnUiThread(new Runnable() {
@@ -239,6 +248,7 @@ public class Support3 extends AppCompatActivity {
                     sweepfrag.updateUI();
                 }
                 else if (pager_item == 1){
+                    //monitorfrag.updateUI();
                     servofrag.updateUI();
                 }
                 else if (pager_item == 2){
@@ -251,7 +261,6 @@ public class Support3 extends AppCompatActivity {
     }
 
     // Tab and Views Management ===============================================================================================
-
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -274,17 +283,21 @@ public class Support3 extends AppCompatActivity {
                 servofrag = ServoFragment.newInstance(position + 1);
                 servofrag.bindService(etherserviceBinder);
                 return servofrag;
+//                monitorfrag = MonitorFragment.newInstance(position + 1);
+//                //monitorfrag.bindService(etherserviceBinder);
+//                return monitorfrag;
             }
             else {
                 monitorfrag = MonitorFragment.newInstance(position + 1);
                 monitorfrag.bindService(etherserviceBinder);
                 return monitorfrag;
             }
-
         }
 
         @Override
-        public int getCount() { return 3;}
+        public int getCount() {
+            return 3;
+        }
 
         @Override
         public CharSequence getPageTitle(int position) {

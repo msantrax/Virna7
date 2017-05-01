@@ -189,7 +189,7 @@
         tools:layout_editor_absoluteX="33dp" />
 
     <TextView
-        android:text="Comando da WG20"
+        android:text="Comando da WG2"
         android:layout_height="wrap_content"
         android:id="@+id/lb_mon_wg20"
         android:background="?android:attr/actionModeBackground"
@@ -251,7 +251,7 @@
         app:layout_constraintHorizontal_bias="0.0" />
 
     <RadioButton
-        android:text="WG20 Conectada"
+        android:text="WG2 Conectada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rb_mon_wg20present"
