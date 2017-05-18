@@ -1,2 +1,86 @@
-{
-}
+[
+  {
+    "id": 0,
+    "name": "ACP Default",
+    "owner": "Marcelo Raso",
+    "created": "290417:1801",
+    "phases" : [
+      {
+        "phasename": "fase 1",
+        "triggertype": "period",
+        "triggervalue": 600,
+        "values" : [
+          {
+            "valuetype" : "speed",
+            "startvalue" : 10,
+            "stopvalue" : 40
+          },
+          {
+            "valuetype" : "sweepscan",
+            "startvalue" : 20,
+            "stopvalue" : 80,
+            "extravalue" : 2
+          }
+        ]
+      },
+      {
+        "phasename": "fase 2",
+        "triggertype": "period",
+        "triggervalue": 3600
+      }
+    ]
+  },
+
+  {
+    "id": 1,
+    "name": "ACP Default 2",
+    "owner": "Marcelo Raso",
+    "created": "290417:1801",
+    "phases" : [
+      {
+        "phasename": "fase 1",
+        "triggertype": "period",
+        "triggervalue": 600,
+        "values" : [
+          {
+            "valuetype" : "speed",
+            "startvalue" : 10,
+            "stopvalue" : 40
+          },
+          {
+            "valuetype" : "sweepscan",
+            "startvalue" : 20,
+            "stopvalue" : 80,
+            "extravalue" : 2
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "name": "Teste 00",
+    "owner": "Marcelo Raso",
+    "created": "290417:1801"
+
+  },
+
+  {
+    "id": 4,
+    "name": "Teste 01",
+    "owner": "Marcelo Raso",
+    "created": "290417:1801"
+
+  },
+
+  {
+    "id": 4,
+    "name": "Teste 02",
+    "owner": "Marcelo Raso",
+    "created": "290417:1801"
+
+  }
+
+
+]

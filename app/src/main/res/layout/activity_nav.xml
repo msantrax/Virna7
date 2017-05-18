@@ -15,7 +15,9 @@
         android:layout_height = "match_parent"
         android:layout_weight="1"
         android:layout_gravity="right"
-        android:layout_margin="50dp" />
+        android:layout_margin="50dp" >
+
+    </FrameLayout>
 
 
     <GridLayout

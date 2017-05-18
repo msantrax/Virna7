@@ -22,6 +22,8 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
     private ArrayList<CanvasWidget> buttons;
     private ArrayList<CanvasWidget> labels;
 
+
+
     private enum animation_states {NONE, FADELABELS, SHOWLABELS, EXPLODE, COLAPSE,
                         SHOWBUTTONS, HIDEBUTTONS, PARKBUTTON, UNPARKBUTTON,
                         SHOWCHOICE, HIDECHOICE}
@@ -65,6 +67,7 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
 
     public void setFragmentManager(FragmentManager fm) { fragmentManager = fm;}
 
+
     public int getButtonIndex(int id){
 
         for(CanvasWidget cw : buttons){
@@ -82,11 +85,12 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
         if (show){
             if (!choice_visible) {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
+                itemfragment.setIndex(exclude_widget);
+                
                 fragmentTransaction.add(R.id.ui_container, itemfragment);
 //                fragmentTransaction.setCustomAnimations(R.animator.slide_in_left,
 //                        R.animator.slide_out_right);
-                //fragmentTransaction.
+//                fragmentTransaction.
                 fragmentTransaction.commit();
                 choice_visible = true;
             }

@@ -18,6 +18,7 @@ import java.net.NoRouteToHostException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.concurrent.BlockingQueue;
@@ -39,7 +40,6 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
 
     public static enum STATES { CONFIG, RESET, INIT, IDLE, ATTACH, ATTACHED, DETACH, NETLISTEN, NETCONNECTED,
                                 SENDU, RECVU, ONERROR, MANAGETASK, RUNNINGTASK, PING,  TOOGLECB, MANAGECALLBACK
-
     };
 
     public static enum CMDS {LOADSTATE, RECOVERERROR, UPDATEVALUES};
@@ -60,6 +60,7 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
     boolean broadcast_traffic = true;
     boolean broadcast_rawstatus = true;
 
+
     public EtherService() {
         servicequeue = new LinkedBlockingQueue<>();
         attached = false;
@@ -71,7 +72,7 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
         autoattach = preferences.getBoolean(getString(R.string.pref_net_k_autologin), false);
         callback_enabled = preferences.getBoolean(getString(R.string.pref_net_k_dostatuscallback), false);
         callbacklag = Integer.valueOf(preferences.getString(getString(R.string.pref_net_k_statuscallbackperiod),"500"));
-        host = preferences.getString(getString(R.string.pref_net_k_ip),"192.168.0.110");
+        host = preferences.getString(getString(R.string.pref_net_k_ip),"192.168.1.110");
         port = Integer.valueOf(preferences.getString(getString(R.string.pref_net_k_port),"10887"));
     }
 
@@ -567,7 +568,7 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
                                 }
                                 else{
                                     traffic_timeout--;
-                                    Log.d(TAG, "Timeout = " + traffic_timeout);
+                                    //Log.d(TAG, "Timeout = " + traffic_timeout);
                                     if (traffic_timeout < 0){
                                         //if (autoattach) {
                                             try {
@@ -632,7 +633,7 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
                     case RECVU:
                         AcpMessage rm = new AcpMessage(true, message);
                         if (rm.getCmd()== 20){
-                            Log.d(TAG, "Receiving Status @ recvu : " + rm.toString());
+                            //Log.d(TAG, "Receiving Status @ recvu : " + rm.toString());
                             if (broadcast_rawstatus){
                                 broadcastMessage("ACPMESSAGE", rm);
                             }
@@ -695,6 +696,5 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
             this.done = done;
         }
     };
-
 
 }

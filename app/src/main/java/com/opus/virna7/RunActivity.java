@@ -247,16 +247,9 @@ public class RunActivity extends AppCompatActivity implements
         recal[1] = Double.valueOf(spref);
 
         userecalflag = preferences.getBoolean(getString(R.string.pref_mon_k_lvdtuserecal), true);
-        
-        
-        
     }
 
     public void savePreferences(){
-
-
-
-
 
     }
 
@@ -342,7 +335,7 @@ public class RunActivity extends AppCompatActivity implements
     }
 
 
-    // USB Service Binding ===============================================================================================
+    // Ether Service Binding ===============================================================================================
 
     private ServiceConnection connection = new ServiceConnection() {
 

@@ -17,8 +17,6 @@ public class CanvasWidget {
     private int wdg_id;
     private int index;
 
-
-
     private View widget;
     private boolean button;
 
@@ -154,10 +152,6 @@ public class CanvasWidget {
         return anim;
     }
 
-
-
-
-
     public View getWidget() {
         return widget;
     }
@@ -169,8 +163,6 @@ public class CanvasWidget {
     public int getIndex() {
         return index;
     }
-
-
 
 
 }

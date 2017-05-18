@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,13 +19,15 @@ import android.view.ViewGroup;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ItemFragment extends Fragment {
+public class ItemFragment extends Fragment implements RecyclerView.OnItemTouchListener {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
-    private int mColumnCount = 1;
+    private int mColumnCount = 2;
     private OnListFragmentInteractionListener mListener;
+
+    private int index;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -42,6 +46,9 @@ public class ItemFragment extends Fragment {
         return fragment;
     }
 
+
+    public void setIndex(int index) { this.index = index;}
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,23 +59,24 @@ public class ItemFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
-        }
+        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        Virna7Application virna  = (Virna7Application)view.getContext().getApplicationContext();
+
+        RecyclerView rview = (RecyclerView)view.findViewById(R.id.canvas_choicelist);
+
+        rview.setLayoutManager(new LinearLayoutManager(virna));
+        //rview.setLayoutManager(new GridLayoutManager(virna, mColumnCount));
+
+        rview.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+
+        rview.addOnItemTouchListener(this);
+
         return view;
     }
+
+
 
 
     @Override
@@ -88,6 +96,22 @@ public class ItemFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        Log.i("FRAG", "Recycler Touch" );
+
+    }
+
+    @Override
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -100,6 +124,7 @@ public class ItemFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
+
         void onListFragmentInteraction(DummyContent.DummyItem item);
     }
 }

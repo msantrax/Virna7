@@ -44,7 +44,7 @@ public class Virna7 extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
 
     private SharedPreferences preferences ;
-
+    private Virna7Application virna;
 
     private View mContentView;
     private View mKeypadView;
@@ -134,9 +134,11 @@ public class Virna7 extends AppCompatActivity {
         Log.d(TAG, "intent: " + intent);
         String action = intent.getAction();
 
-        if (etherserviceBinder == null){
-            startEtherService();
-        }
+        virna  = (Virna7Application)getApplicationContext();
+
+        if (etherserviceBinder == null){ startEtherService();}
+
+        virna.setProfilemanager(ProfileManager.getInstance(this.getAssets()));
 
     }
 
@@ -151,6 +153,7 @@ public class Virna7 extends AppCompatActivity {
         if (etherserviceBinder != null) {
             //unbindService(connection);
         }
+
     }
 
 
@@ -184,10 +187,11 @@ public class Virna7 extends AppCompatActivity {
         public void onServiceConnected(ComponentName className, IBinder service) {
             Log.d(TAG, "Service Connection is biding on Virna...");
             etherserviceBinder = ((EtherService.EtherBinder)service).getService();
-            //usbserviceBinder.setUsbManager (UsbManager manager)
             startService(i);
+            virna.setEtherserviceBinder(etherserviceBinder);
         }
         public void onServiceDisconnected(ComponentName className) {
+
             etherserviceBinder = null;
         }
     };
@@ -367,6 +371,27 @@ public class Virna7 extends AppCompatActivity {
             else if (spwd.equalsIgnoreCase("7")){
                 etherserviceBinder.doComand(EtherService.STATES.PING, 0);
             }
+
+            else if (spwd.equalsIgnoreCase("666")){
+                Intent intent = new Intent(this, EtherService.class);
+                stopService(intent);
+                finish();
+                System.exit(0);
+            }
+            else if (spwd.equalsIgnoreCase("555")){
+//                Intent i = new Intent("android.intent.action.ACTION_REQUEST_SHUTDOWN");
+//                i.putExtra("android.intent.extra.KEY_CONFIRM", true);
+//                startActivity(i);
+                try {
+                    Log.i(TAG, "Rebooting tablet .....");
+                    Process proc = Runtime.getRuntime().exec(new String[]{ "/system/bin/reboot" });
+                    proc.waitFor();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+
 
 
             else if (spwd.isEmpty()){

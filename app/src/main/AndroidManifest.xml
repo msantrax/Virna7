@@ -9,6 +9,7 @@
         android:allowBackup="true"
         android:configChanges="orientation|keyboardHidden|screenSize"
         android:icon="@mipmap/acp_launcher"
+        android:name="com.opus.virna7.Virna7Application"
         android:label="@string/app_name"
         android:supportsRtl="true"
 

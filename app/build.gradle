@@ -38,4 +38,5 @@ dependencies {
     compile 'com.android.support:support-vector-drawable:25.1.0'
     compile 'com.androidplot:androidplot-core:1.4.0'
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
 }

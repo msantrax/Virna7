@@ -25,6 +25,7 @@ public class DummyContent {
 
     private static final int COUNT = 25;
 
+
     static {
         // Add some sample items.
         for (int i = 1; i <= COUNT; i++) {
@@ -38,7 +39,7 @@ public class DummyContent {
     }
 
     private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+        return new DummyItem(String.valueOf(position + 4), "Item " + (position+10), makeDetails(position));
     }
 
     private static String makeDetails(int position) {

@@ -2,19 +2,29 @@ package com.opus.virna7;
 
 import android.animation.ObjectAnimator;
 import android.app.FragmentManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
 
 public class NavActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
 
+    public static final String TAG = "NAV----";
+
     private CanvasCoordinator canvas_coordinator;
     private boolean exploded = false;
+    private Virna7Application virna;
 
     FragmentManager fragmentManager;
 
@@ -24,9 +34,10 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
         setContentView(R.layout.activity_nav);
         ButterKnife.bind(this);
 
+        virna  = (Virna7Application)getApplicationContext();
+
         GridLayout grid = (GridLayout) findViewById(R.id.canvasgrid);
         canvas_coordinator = new CanvasCoordinator(grid);
-
 
         FragmentManager fragmentManager = getFragmentManager();
         canvas_coordinator.setFragmentManager(fragmentManager);
@@ -38,10 +49,6 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
 //                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 //                | View.SYSTEM_UI_FLAG_FULLSCREEN
 //                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
-
-
-
 
     }
 
@@ -62,6 +69,16 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
 //    }
 
 
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "Resuming Nav Canvas...");
+
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -72,6 +89,8 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
         canvas_coordinator.onAnimationEnd(new ObjectAnimator());
         exploded = true;
     }
+
+
 
     public void CanvasClicked(View v) {
 
@@ -89,8 +108,6 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
             startActivity(new Intent("com.opus.virna7.RunActivity"));
             return;
         }
-
-
 
         else if ( button_index!= -1){
             if (exploded) {
@@ -117,7 +134,7 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
             }
         }
 
-        Log.i("L17", "Widget Clicked : " + v.getId());
+        //Log.i("L17", "Widget Clicked : " + v.getId());
 
     }
 
