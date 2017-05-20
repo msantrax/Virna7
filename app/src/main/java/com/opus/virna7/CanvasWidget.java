@@ -34,11 +34,11 @@ public class CanvasWidget {
     private TimeInterpolator explode_interpolator;
 
 
-    private static float[] colapse_x_values = {420f,210f,0f,420f,210f};
-    private static float[] colapse_y_values = {175f,175f,175f,0f,0f};
+    private static float[] colapse_x_values = { 420f,   210f,   0f,         420f,   210f};
+    private static float[] colapse_y_values = { 175f,   175f,   175f,       0f      ,0f};
 
-    private static float[] park_x_values = {-10f,-210f,-420f,    -10f, -210f};
-    private static float[] upark_x_values = {-20f,-210f, 420f,    -20f, -210f};
+    private static float[] park_x_values = {    -20f,   -220f,  -420f,    -10f,     -220f};
+    private static float[] upark_x_values = {   -20f,   -220f,   420f,    -20f,     -220f};
 
     private static float[] park_y_values = {87f,87f,87f,  -87f, -87f};
 

@@ -3,12 +3,14 @@ package com.opus.virna7;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -22,21 +24,33 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
     private ArrayList<CanvasWidget> buttons;
     private ArrayList<CanvasWidget> labels;
 
-
-
     private enum animation_states {NONE, FADELABELS, SHOWLABELS, EXPLODE, COLAPSE,
                         SHOWBUTTONS, HIDEBUTTONS, PARKBUTTON, UNPARKBUTTON,
                         SHOWCHOICE, HIDECHOICE}
+
+    public enum paneltypes { OPERATIONSPANEL, EDITPANEL, HELPPANEL}
+
     private Stack<animation_states> animation_stack;
 
-    FragmentManager fragmentManager;
+    private Virna7Application virna;
+    private NavActivity nav;
+    private ConstraintLayout choicepanel;
+    private RecyclerView choicelist;
+    private TextView choiceheader;
+    private Button btedit;
+    private Button btcopy;
+    private Button btdelete;
+
     boolean choice_visible;
-
     private int exclude_widget;
-    private ItemFragment itemfragment;
+    private boolean canvasready = false;
+
+    private CanvasChoiceRecyclerViewAdapter adapter;
+    private CanvasChoiceRecyclerViewAdapter.ViewHolder selectedprofile;
 
 
-    public CanvasCoordinator(GridLayout grid) {
+
+    public CanvasCoordinator(NavActivity nav) {
 
         buttons=new ArrayList<>();
         labels=new ArrayList<>();
@@ -45,6 +59,17 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
         animation_stack= new Stack<>();
         exclude_widget=-1;
         choice_visible = false;
+
+        GridLayout grid = (GridLayout) nav.findViewById(R.id.canvasgrid);
+        choicepanel = (ConstraintLayout) nav.findViewById(R.id.canvas_choice_root);
+        choicelist = (RecyclerView) nav.findViewById(R.id.canvas_choice_rv_items);
+        choiceheader = (TextView) nav.findViewById(R.id.canvas_choice_tv_header);
+        btedit = (Button) nav.findViewById(R.id.canvas_choice_bt_edit);
+        btcopy = (Button) nav.findViewById(R.id.canvas_choice_bt_copy);
+        btdelete = (Button) nav.findViewById(R.id.canvas_choice_bt_delete);
+
+        this.nav=nav;
+        virna  = (Virna7Application)nav.getApplicationContext();
 
         for (int i = 0; i < grid.getChildCount(); i++) {
             View widget = (View) grid.getChildAt(i);
@@ -61,12 +86,38 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
             }
         }
 
-        itemfragment = ItemFragment.newInstance(1);
+        choicelist.setLayoutManager(new LinearLayoutManager(nav));
+        adapter = new CanvasChoiceRecyclerViewAdapter(virna.getProfilemanager().getProfile(), this);
+        choicelist.setAdapter(adapter);
+
+        btedit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.i("L17", "Edit clicked");
+            }
+        });
+
+        btcopy.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.i("L17", "Copy clicked");
+                if (selectedprofile != null){
+                    virna.getProfilemanager().getProfile().add(selectedprofile.mItem.clone());
+                    adapter.notifyItemInserted(virna.getProfilemanager().getProfile().size());
+                }
+            }
+        });
+
+        btdelete.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.i("L17", "Delete clicked");
+                if (selectedprofile != null){
+                    int position = selectedprofile.getAdapterPosition();
+                    virna.getProfilemanager().getProfile().remove(position);
+                    adapter.notifyItemRemoved(position);
+                }
+            }
+        });
 
     }
-
-    public void setFragmentManager(FragmentManager fm) { fragmentManager = fm;}
-
 
     public int getButtonIndex(int id){
 
@@ -80,34 +131,81 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
     public void clearStates() {animation_stack.clear();}
 
 
+
+    public void choiceClicked (CanvasChoiceRecyclerViewAdapter.ViewHolder holder){
+
+        Log.i("L17", "Choice clicked @" + holder.mItem.getName());
+
+        if (exclude_widget == 1){
+
+
+
+            if (selectedprofile != null && (selectedprofile.mItem.getId() != holder.mItem.getId())) selectedprofile.setSelect(false);
+            if (selectedprofile == null || (selectedprofile.mItem.getId() != holder.mItem.getId())) {
+                holder.setSelect(true);
+                selectedprofile = holder;
+            }
+        }
+        else{
+            nav.choiceClicked(holder.mItem, exclude_widget);
+        }
+
+
+
+    }
+
+    public void configChoicePanel(paneltypes paneltype){
+
+        if (paneltype == paneltypes.OPERATIONSPANEL){
+            choiceheader.setText("Selecione o Perfil a Executar :");
+            //choicelist.setLayoutParams(new android.support.constraint.ConstraintLayout.LayoutParams(500, 200));
+            btedit.setVisibility(View.GONE);
+            btcopy.setVisibility(View.GONE);
+            btdelete.setVisibility(View.GONE);
+        }
+        if (paneltype == paneltypes.EDITPANEL){
+            choiceheader.setText("Selecione o Perfil a Modificar :");
+            //choicelist.setLayoutParams(new android.support.constraint.ConstraintLayout.LayoutParams(500, 150));
+            btedit.setVisibility(View.VISIBLE);
+            btcopy.setVisibility(View.VISIBLE);
+            btdelete.setVisibility(View.VISIBLE);
+        }
+        if (paneltype == paneltypes.HELPPANEL){
+            btedit.setVisibility(View.GONE);
+            btcopy.setVisibility(View.GONE);
+            btdelete.setVisibility(View.GONE);
+
+        }
+
+    }
+
+
     public void showChoiceFragment(boolean show){
 
         if (show){
             if (!choice_visible) {
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                itemfragment.setIndex(exclude_widget);
-                
-                fragmentTransaction.add(R.id.ui_container, itemfragment);
-//                fragmentTransaction.setCustomAnimations(R.animator.slide_in_left,
-//                        R.animator.slide_out_right);
-//                fragmentTransaction.
-                fragmentTransaction.commit();
+                choicepanel.setVisibility(View.VISIBLE);
                 choice_visible = true;
             }
         }
         else{
             if (choice_visible) {
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Fragment fragment = fragmentManager.findFragmentById(R.id.ui_container);
-                fragmentTransaction.remove(fragment);
-                fragmentTransaction.commit();
+                choicepanel.setVisibility(View.GONE);
                 choice_visible = false;
             }
         }
-        onAnimationEnd(new ObjectAnimator());
 
+        onAnimationEnd(new ObjectAnimator());
     }
 
+    public void startCanvas(){
+
+        choicepanel.setVisibility(View.GONE);
+        choice_visible = false;
+        animation_stack.push(animation_states.SHOWLABELS);
+        animation_stack.push(animation_states.EXPLODE);
+
+    }
 
     public void setCanvas(boolean operational){
 
@@ -115,30 +213,23 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
             animation_stack.push(animation_states.SHOWLABELS);
             animation_stack.push(animation_states.EXPLODE);
             animation_stack.push(animation_states.SHOWBUTTONS);
+            animation_stack.push(animation_states.UNPARKBUTTON);
             animation_stack.push(animation_states.HIDECHOICE);
 
         }
         else{
             animation_stack.push(animation_states.SHOWCHOICE);
+            animation_stack.push(animation_states.PARKBUTTON);
             animation_stack.push(animation_states.HIDEBUTTONS);
             animation_stack.push(animation_states.COLAPSE);
             animation_stack.push(animation_states.FADELABELS);
         }
     }
 
-    public void parkCanvas(boolean park){
-
-        if(park){
-            animation_stack.push(animation_states.PARKBUTTON);
-        }
-        else{
-            animation_stack.push(animation_states.UNPARKBUTTON);
-        }
-    }
 
     public void parkButton(boolean park){
 
-        Log.i("L17", "Parking Button = " + park + " on " + exclude_widget);
+        //Log.i("L17", "Parking Button = " + park + " on " + exclude_widget);
         AnimatorSet btanimset = new AnimatorSet();
         ArrayList<ObjectAnimator> animations = new ArrayList<>();
 
@@ -151,6 +242,7 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
 
         btanimset.addListener(this);
         btanimset.start();
+
     }
 
 
@@ -166,7 +258,6 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
         for (ObjectAnimator oa : animations){
             btanimset.play(oa);
         }
-
         btanimset.addListener(this);
         btanimset.start();
     }
@@ -178,13 +269,13 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
         for(CanvasWidget cw : labels){
             btanimset.play(cw.getFadeLabelAnimator(fade));
         }
-
         btanimset.addListener(this);
         btanimset.start();
+
+        canvasready=!fade;
     }
 
     public void hideButtons(boolean hide){
-
 
         for (CanvasWidget cw : buttons){
             if (hide){
@@ -194,16 +285,14 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
                 cw.getWidget().setAlpha(1f);
             }
         }
-
         onAnimationEnd(new ObjectAnimator());
     }
-
-
 
     @Override
     public void onAnimationStart(Animator animation) {
 
     }
+
 
     @Override
     public void onAnimationEnd(Animator animation) {
@@ -255,13 +344,18 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
     @Override
     public void onAnimationRepeat(Animator animation) {}
 
+
     public void setExclude_widget(int exclude_widget) {
         this.exclude_widget = exclude_widget;
     }
+
 
     public int getExclude_widget() {
         return exclude_widget;
     }
 
+    public boolean isCanvasready() {
+        return canvasready;
+    }
 
 }

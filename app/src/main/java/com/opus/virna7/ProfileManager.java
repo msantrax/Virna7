@@ -71,6 +71,15 @@ public class ProfileManager {
     }
 
 
+    public ProfileEntry findProfileByName ( String name){
+
+        for (ProfileEntry entry : profiles){
+            if (entry.getName().equals(name)) return entry;
+        }
+        return profiles.get(0);
+    }
+
+
     public void openProfile(){
 
         try {

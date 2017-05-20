@@ -1,5 +1,7 @@
 package com.opus.virna7;
 
+import java.util.ArrayList;
+
 /**
  * Created by opus on 30/04/17.
  */
@@ -50,6 +52,17 @@ public class ProfileValue {
     public double getExtravalue() {return extravalue;}
 
     public void setExtravalue(double extravalue) {this.extravalue = extravalue;}
+
+
+    public ProfileValue clone(){
+
+        ProfileValue clone = new ProfileValue (stype,
+                startvalue,
+                stopvalue,
+                extravalue);
+        return clone;
+    }
+
 
 
 }

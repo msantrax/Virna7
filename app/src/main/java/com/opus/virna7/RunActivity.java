@@ -46,7 +46,6 @@ import java.util.ArrayDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import static android.R.drawable.ic_popup_sync;
 import static android.view.Menu.NONE;
 
 
@@ -80,7 +79,14 @@ public class RunActivity extends AppCompatActivity implements
     private static final long toff =  10800000;
     private boolean userelative;
     private int defperiod;
+
+
     private TextView timergauge;
+    private TextView tv_profile;
+    private TextView tv_phase;
+    private String phasenum;
+    private int phase;
+
 
     private double[] coefs = new double[3];
     private double[] limits = new double[2];
@@ -121,6 +127,11 @@ public class RunActivity extends AppCompatActivity implements
 
     private SweepDescriptor sweepdescriptor;
 
+    private ProfileEntry profile;
+    private Virna7Application virna;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,11 +139,17 @@ public class RunActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run);
 
+        virna  = (Virna7Application)getApplicationContext();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+        String s = getIntent().getStringExtra("profile");
+
+        profile = virna.getProfilemanager().findProfileByName(s);
+
 
         RunTaskDescriptor td = RunTaskDescriptor.getPolishDescriptor();
         sweepdescriptor = new SweepDescriptor();
-
 
         //TextView tvpgm = (TextView) findViewById(R.id.tv_program);
         //tvpgm.setText("Desbaste Default");
@@ -140,13 +157,22 @@ public class RunActivity extends AppCompatActivity implements
 
         ibsync = (ImageButton) findViewById(R.id.ib_sync);
 
+        tv_profile = (TextView) findViewById(R.id.tv_run_profile);
+        tv_phase = (TextView) findViewById(R.id.tv_run_phase);
+        tv_profile.setText(profile.getName());
+        phasenum = " de " + profile.getPhasesNum();
+        phase=0;
+        loadPhase(phase);
 
         gcvex = (TextView) findViewById(R.id.gcvex);
         gpt = (ImageView) findViewById(R.id.gpt);
+
+
         cvexpt = ObjectAnimator.ofFloat(gpt, "translationX", 0, 0);
         cvexpt.setInterpolator(new AccelerateDecelerateInterpolator());
         cvexpt.setDuration(1000);
         cvexpt.addListener(this);
+
 
         timergauge = (TextView) findViewById(R.id.timer_message);
         FrameLayout fmtime = (FrameLayout) findViewById(R.id.fm_time);
@@ -511,6 +537,14 @@ public class RunActivity extends AppCompatActivity implements
         return res;
     }
 
+
+    private void loadPhase(int phase){
+
+        tv_phase.setText(phase+1 + phasenum);
+
+    }
+
+
     // ==================== Context menus =================================================================================
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -777,8 +811,8 @@ public class RunActivity extends AppCompatActivity implements
                     "",
                     "Ativar / Desativar Vãcuo",
                     "Habilitar Monitoramento",
-                    "Reiniciar Configuração",
-                    "Salvar Configuração",
+                    "Reiniciar Perfil",
+                    "Carregar Perfil",
         };
 
         public static OperationsDialogFragment newInstance( RunActivity run) {
@@ -1161,7 +1195,7 @@ public class RunActivity extends AppCompatActivity implements
 
     private class RunSwipeTouchListener extends RunTaskSwipeTouchListener {
 
-         RunActivity acvty;
+        RunActivity acvty;
         int index;
 
 

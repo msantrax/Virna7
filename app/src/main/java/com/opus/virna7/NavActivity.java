@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 
-public class NavActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
+public class NavActivity extends AppCompatActivity {
 
     public static final String TAG = "NAV----";
 
@@ -26,7 +27,6 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
     private boolean exploded = false;
     private Virna7Application virna;
 
-    FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +34,7 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
         setContentView(R.layout.activity_nav);
         ButterKnife.bind(this);
 
-        virna  = (Virna7Application)getApplicationContext();
-
-        GridLayout grid = (GridLayout) findViewById(R.id.canvasgrid);
-        canvas_coordinator = new CanvasCoordinator(grid);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        canvas_coordinator.setFragmentManager(fragmentManager);
+        canvas_coordinator = new CanvasCoordinator(this);
 
 //        View decorView = getWindow().getDecorView();
 //        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -85,64 +79,76 @@ public class NavActivity extends AppCompatActivity implements ItemFragment.OnLis
         super.onPostCreate(savedInstanceState);
 
         //canvas_coordinator.setExclude_widget(1);
-        canvas_coordinator.setCanvas(true);
+        canvas_coordinator.clearStates();
+        canvas_coordinator.startCanvas();
         canvas_coordinator.onAnimationEnd(new ObjectAnimator());
         exploded = true;
     }
 
+    private void setCanvas (boolean restore, int btindex){
+
+        if (restore){
+            canvas_coordinator.setExclude_widget(btindex);
+            canvas_coordinator.clearStates();
+            canvas_coordinator.setCanvas(true);
+            canvas_coordinator.onAnimationEnd(new ObjectAnimator());
+            exploded = true;
+        }
+        else{
+            canvas_coordinator.setExclude_widget(btindex);
+            canvas_coordinator.clearStates();
+            canvas_coordinator.setCanvas(false);
+            canvas_coordinator.onAnimationEnd(new ObjectAnimator());
+            exploded = false;
+        }
+    }
+
+    public void choiceClicked(ProfileEntry profile, int button){
+
+        Log.i(TAG, "Acionando run com :" + profile.getName());
+        setCanvas (true, button);
+
+        //while(!canvas_coordinator.isCanvasready()){};
+        Intent i = new Intent("com.opus.virna7.RunActivity");
+        //Intent i = new Intent("com.opus.virna7.ProfileItemListActivity");
+
+        //i.putExtra("profile", profile.getName());
+        startActivity(i);
+
+    }
 
 
     public void CanvasClicked(View v) {
+
+        //startActivity(new Intent("com.opus.virna7.RunActivity"));
 
         int button_index = canvas_coordinator.getButtonIndex(v.getId());
 
         if (button_index == 2 && exploded){
             startActivity(new Intent("com.opus.virna7.SettingsActivity"));
-            return;
         }
         else if (button_index == 3 && exploded){
             startActivity(new Intent("com.opus.virna7.Support3"));
-            return;
         }
-        else if (button_index == 1 && exploded){
-            startActivity(new Intent("com.opus.virna7.RunActivity"));
-            return;
-        }
-
-        else if ( button_index!= -1){
+        else if (button_index == 0 ){
             if (exploded) {
-                canvas_coordinator.setExclude_widget(button_index);
-                canvas_coordinator.clearStates();
-
-                canvas_coordinator.parkCanvas(true);
-                canvas_coordinator.setCanvas(false);
-
-                canvas_coordinator.onAnimationEnd(new ObjectAnimator());
-
-                exploded = false;
+                canvas_coordinator.configChoicePanel(CanvasCoordinator.paneltypes.OPERATIONSPANEL);
+                setCanvas(false, 0);
             }
             else{
-                canvas_coordinator.setExclude_widget(button_index);
-                canvas_coordinator.clearStates();
-
-                canvas_coordinator.setCanvas(true);
-                canvas_coordinator.parkCanvas(false);
-
-                canvas_coordinator.onAnimationEnd(new ObjectAnimator());
-                exploded = true;
-                //canvas_coordinator.setExclude_widget(-1);
+                setCanvas(true, 0);
+            }
+        }
+        else if (button_index == 1 ){
+            if (exploded) {
+                canvas_coordinator.configChoicePanel(CanvasCoordinator.paneltypes.EDITPANEL);
+                setCanvas(false, 1);
+            }
+            else{
+                setCanvas(true, 1);
             }
         }
 
-        //Log.i("L17", "Widget Clicked : " + v.getId());
-
     }
 
-
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
-        Log.i("L17", "list Clicked : ");
-
-    }
 }

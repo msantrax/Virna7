@@ -1,6 +1,7 @@
 package com.opus.virna7;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by opus on 30/04/17.
@@ -53,4 +54,22 @@ public class ProfilePhase {
     public void setValues(ArrayList<ProfileValue> values) {
         this.values = values;
     }
+
+    public int getValuesNum() {return values.size();}
+
+    public ProfilePhase clone(){
+
+        ArrayList<ProfileValue> tvalues = new ArrayList<>();
+        for (ProfileValue vl : values){
+            tvalues.add(vl.clone());
+        }
+
+        ProfilePhase clone = new ProfilePhase (phasename,
+                triggername,
+                triggervalue,
+                tvalues);
+        return clone;
+    }
+
+
 }

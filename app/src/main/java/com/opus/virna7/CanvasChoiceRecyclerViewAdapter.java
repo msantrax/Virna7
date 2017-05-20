@@ -7,17 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class CanvasChoiceRecyclerViewAdapter extends RecyclerView.Adapter<CanvasChoiceRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyContent.DummyItem> mValues;
-    private final ItemFragment.OnListFragmentInteractionListener mListener;
+    private final ArrayList<ProfileEntry> mValues;
+    private CanvasCoordinator cc;
 
-    public MyItemRecyclerViewAdapter(List<DummyContent.DummyItem> items, ItemFragment.OnListFragmentInteractionListener listener) {
+    public CanvasChoiceRecyclerViewAdapter(ArrayList<ProfileEntry> items, CanvasCoordinator cc) {
         mValues = items;
-        mListener = listener;
+        this.cc = cc;
     }
 
     @Override
@@ -29,17 +30,11 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        //holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position). content);
-
+        holder.mContentView.setText(mValues.get(position).getName());
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+                cc.choiceClicked(holder);
             }
         });
     }
@@ -50,18 +45,29 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     }
 
 
+
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        //public final TextView mIdView;
         public final TextView mContentView;
-        public DummyContent.DummyItem mItem;
+        public ProfileEntry mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            //mIdView = (TextView) view.findViewById(R.id.id);
             mContentView = (TextView) view.findViewById(R.id.content);
         }
+
+        public void setSelect(boolean select){
+            if (select){
+                mContentView.setTextColor(0xFFFF4081);
+            }
+            else{
+                mContentView.setTextColor(0xFF000000);
+            }
+        }
+
 
         @Override
         public String toString() {

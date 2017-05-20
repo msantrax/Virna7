@@ -62,4 +62,25 @@ public class ProfileEntry {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+    public int getPhasesNum() {return phases.size();}
+
+    public ProfileEntry clone(){
+
+        long now = System.currentTimeMillis();
+
+        ArrayList<ProfilePhase> tphases = new ArrayList<>();
+        for (ProfilePhase pp : phases){
+            tphases.add(pp.clone());
+        }
+
+        ProfileEntry clone = new ProfileEntry (now,
+                                "Copia de " + name,
+                                owner,
+                                new Date(now),
+                                tphases);
+
+        return clone;
+    }
+
 }
