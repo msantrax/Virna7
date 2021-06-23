@@ -142,7 +142,6 @@ public class RunActivity extends AppCompatActivity implements
         virna  = (Virna7Application)getApplicationContext();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-
         String s = getIntent().getStringExtra("profile");
 
         profile = virna.getProfilemanager().findProfileByName(s);
@@ -540,7 +539,8 @@ public class RunActivity extends AppCompatActivity implements
 
     private void loadPhase(int phase){
 
-        tv_phase.setText(phase+1 + phasenum);
+        String tphase = profile.getPhases().get(phase).getPhasename();
+        tv_phase.setText(tphase);
 
     }
 
@@ -726,6 +726,7 @@ public class RunActivity extends AppCompatActivity implements
 
     // Operations Context menu services =====================================================================================
     public void doOperation(int optype) {
+
         //Log.i(TAG, "Operation requested : " + optype);
         AcpMessage m;
 
@@ -897,7 +898,7 @@ public class RunActivity extends AppCompatActivity implements
     public void recoverRunErrorMessage() { }
 
 
-
+        // Error Dialog services ===============================================================================
     public void startLGTask(){
 
         AcpMessage m0 = new AcpMessage(true, 3, 3,"");
@@ -1193,7 +1194,7 @@ public class RunActivity extends AppCompatActivity implements
     }
 
 
-    private class RunSwipeTouchListener extends RunTaskSwipeTouchListener {
+    public class RunSwipeTouchListener extends RunTaskSwipeTouchListener {
 
         RunActivity acvty;
         int index;

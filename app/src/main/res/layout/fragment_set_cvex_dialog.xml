@@ -1,0 +1,147 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/dbox"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="false"
+    android:layout_gravity="center_horizontal|center"
+    tools:context=".SetValDialogFragment"
+    tools:layout_editor_absoluteX="383dp"
+    tools:layout_editor_absoluteY="188dp">
+
+
+    <ExpandableListView
+        android:id="@+id/el_sweepalgo"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="260dp"
+        android:layout_marginStart="44dp"
+        android:elevation="0dp"
+        android:theme="@style/RtlOverlay.Widget.AppCompat.Search.DropDown"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/lb_interno"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_horizontal|center"
+        android:text="Interno"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/np_interno"
+        app:layout_constraintEnd_toEndOf="@+id/np_interno"
+        app:layout_constraintStart_toStartOf="@+id/np_interno" />
+
+    <TextView
+        android:id="@+id/lb_sweepvel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="Velocidade"
+        android:textAlignment="textEnd"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/np_sweepvel"
+        app:layout_constraintEnd_toEndOf="@+id/np_sweepvel"
+        app:layout_constraintStart_toStartOf="@+id/np_sweepvel"
+        tools:layout_conversion_absoluteHeight="18dp"
+        tools:layout_conversion_absoluteWidth="100dp"
+        tools:layout_conversion_absoluteX="140dp"
+        tools:layout_conversion_absoluteY="30dp" />
+
+    <TextView
+        android:id="@+id/lb_externo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="Externo"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/np_externo"
+        app:layout_constraintEnd_toEndOf="@+id/np_externo"
+        app:layout_constraintStart_toStartOf="@+id/np_externo"
+        tools:layout_conversion_absoluteHeight="18dp"
+        tools:layout_conversion_absoluteWidth="100dp"
+        tools:layout_conversion_absoluteX="240dp"
+        tools:layout_conversion_absoluteY="30dp" />
+
+    <NumberPicker
+        android:id="@+id/np_interno"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="180dp"
+        tools:layout_conversion_absoluteWidth="100dp"
+        tools:layout_conversion_absoluteX="40dp"
+        tools:layout_conversion_absoluteY="50dp" />
+
+    <NumberPicker
+        android:id="@+id/np_sweepvel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/np_externo"
+        app:layout_constraintStart_toEndOf="@+id/np_interno"
+        tools:layout_conversion_absoluteHeight="180dp"
+        tools:layout_conversion_absoluteWidth="100dp"
+        tools:layout_conversion_absoluteX="140dp"
+        tools:layout_conversion_absoluteY="50dp" />
+
+    <NumberPicker
+        android:id="@+id/np_externo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_conversion_absoluteHeight="180dp"
+        tools:layout_conversion_absoluteWidth="100dp"
+        tools:layout_conversion_absoluteX="280dp"
+        tools:layout_conversion_absoluteY="50dp" />
+
+    <CheckBox
+        android:id="@+id/cb_convex"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:checked="true"
+        android:text="Convexo"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/np_interno"
+        app:layout_constraintStart_toEndOf="@+id/np_interno"
+        app:layout_constraintTop_toTopOf="@+id/np_interno"
+        tools:layout_conversion_absoluteHeight="32dp"
+        tools:layout_conversion_absoluteWidth="92dp"
+        tools:layout_conversion_absoluteX="240dp"
+        tools:layout_conversion_absoluteY="128dp" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,117 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profileitem_detail_root"
+    style="?android:attr/textAppearanceLarge"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textIsSelectable="true"
+    tools:context="com.opus.virna7.ProfileItemDetailFragment" >
+
+    <TextView
+        android:text="Fase do Processo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profiledetail_phase_lb_header"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="36sp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:text="Descrição : "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profiledetail_phase_lb_desc"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/profiledetail_phase_tv_name"
+        tools:layout_constraintBaseline_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/profiledetail_phase_guideline3" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/profiledetail_phase_tv_name"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="94dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline4" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="463dp"
+        android:id="@+id/profiledetail_phase_guideline3"
+        app:layout_constraintGuide_begin="53dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="53dp" />
+
+    <TextView
+        android:text="Gatilho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profiledetail_phase_textView3"
+        android:textSize="18sp"
+
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/profiledetail_phase_lb_desc"
+        app:layout_constraintLeft_toLeftOf="@+id/profiledetail_phase_guideline3" />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:id="@+id/profiledetail_phase_sp_triggertype"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintHorizontal_bias="0.37"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline4"
+        app:layout_constraintBottom_toBottomOf="@+id/profiledetail_phase_textView3" />
+
+    <TextView
+        android:text="Valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profiledetail_phase_lb_triggervalue"
+        android:textSize="18sp"
+
+        android:layout_marginTop="56dp"
+        app:layout_constraintTop_toBottomOf="@+id/profiledetail_phase_textView3"
+        app:layout_constraintLeft_toLeftOf="@+id/profiledetail_phase_guideline3" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/profiledetail_phase_et_triggervalue"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline4"
+        app:layout_constraintBottom_toBottomOf="@+id/profiledetail_phase_lb_triggervalue" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline4"
+        app:layout_constraintGuide_begin="170dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="170dp" />
+
+
+</android.support.constraint.ConstraintLayout>

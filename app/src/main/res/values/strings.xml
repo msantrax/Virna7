@@ -54,6 +54,41 @@
         <item>Anti Horário</item>
     </string-array>
 
+    <string-array name="app_users">
+        <item>ACP Instruments</item>
+        <item>Vale ADM</item>
+        <item>Vale Usuario 1</item>
+        <item>Vale Usuario 2</item>
+        <item>Vale Usuario 3</item>
+    </string-array>
+
+
+    <string-array name="phasetriggers">
+        <item>Final dos Comandos</item>
+        <item>Periodo em minutos</item>
+        <item>Verificação de ciclo</item>
+        <item>Inicio de Ciclo</item>
+        <item>Alarme</item>
+    </string-array>
+
+    <string-array name="commands">
+        <item>Definir Velocidade</item>
+        <item>Aumentar velocidade</item>
+        <item>Diminuir Velocidade</item>
+        <item>Acionar Abrasivo</item>
+        <item>Desligar Abrasivo</item>
+        <item>Varredura do Oscilante</item>
+        <item>Oscilante Fixo</item>
+        <item>Posição do Oscilante</item>
+        <item>Concavidade Alpha</item>
+        <item>Concavidade Beta</item>
+        <item>Concavidade Gamma</item>
+        <item>Acionar WG2</item>
+        <item>Desligar WG2</item>
+    </string-array>
+
+
+
 
     <!--Virna preferences-->
 
@@ -66,7 +101,6 @@
     <string name="pref_main_k_autenticate">pref.main.autenticate</string>
     <string name="pref_main_d_autenticate">Autenticar Usuario</string>
     <string name="pref_main_t_autenticate">Usar keypad para autenticar usuario</string>
-
 
 
     <string name="pref_main_k_platespeed">pref.main.platespeed</string>
@@ -103,7 +137,6 @@
     <string name="pref_main_t_scanposition">Posição fixa do Oscilante</string>
 
 
-
     <string-array name="wg20_direction_titles">
         <item>Horário</item>
         <item>Anti Horário</item>
@@ -127,7 +160,6 @@
     <string name="pref_main_k_usedrum">pref.main.usedrum</string>
     <string name="pref_main_t_usedrum">Tambor de Abrasivo</string>
     <string name="pref_main_d_usedrum">Ativar tambor de abrasivo no inicio da tarefa</string>
-
 
 
     <!--Network preferences-->
@@ -215,7 +247,6 @@
     <string name="pref_sweep_t_scanfixerrowindow">Numero max. de passos para erro</string>
 
 
-
     <string name="pref_header_servo">Servo Motor</string>
 
     <string name="pref_servo_k_transfera0">pref.servo.transfera0</string>
@@ -231,7 +262,6 @@
     <string name="pref_servo_t_pidi">Controlador PID - Fator Integral</string>
     <string name="pref_servo_k_pidd">pref.servo.pidd</string>
     <string name="pref_servo_t_pidd">Controlador PID - Fator Derivada</string>
-
 
 
     <string name="pref_header_monitor">Concavidade e Auxiliares</string>
@@ -259,6 +289,12 @@
     <string name="pref_mon_k_lvdtuserecal">pref.mon.lvdtuserecal</string>
     <string name="pref_mon_t_userecal">Usar Recal</string>
     <string name="pref_mon_d_userecal">Usar algoritmo de recalibração do LVDT</string>
+    <string name="title_profileitem_list">profile_items</string>
+    <string name="title_profileitem_detail">profile_item Detail</string>
+
+
+
+
 
 
 

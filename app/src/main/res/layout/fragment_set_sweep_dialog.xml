@@ -11,11 +11,11 @@
 
 
     <ExpandableListView
-        android:layout_weight="1"
         android:id="@+id/el_sweepalgo"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
         android:layout_width="300dp"
+        android:layout_height="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_weight="1"
         android:elevation="0dp" />
 
     <FrameLayout

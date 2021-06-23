@@ -245,8 +245,8 @@ public class SweepFragment extends Fragment implements SeekBar.OnSeekBarChangeLi
     }
 
     public void updateUI() {
-        boolean b = etherservice.getStatusFlag(0);
-        cb_inner.setChecked(b);
+        //boolean b = etherservice.getStatusFlag(0);
+        //cb_inner.setChecked(b);
         //Log.d(Support3.TAG, "Updating Sweep UI");
     }
 
@@ -299,7 +299,7 @@ public class SweepFragment extends Fragment implements SeekBar.OnSeekBarChangeLi
             m.setCmd(EtherService.comand_map.get("SWEEP_DIR"));
             m.setArg(position);
             m.setMessage("0");
-            etherservice.sendMessage(m);
+            //etherservice.sendMessage(m);
         }
     }
 

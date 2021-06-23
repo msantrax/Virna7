@@ -13,6 +13,10 @@ public class Virna7Application  extends Application {
     private EtherService etherserviceBinder;
     private ProfileManager profilemanager;
 
+    private ProfileFlatEntry.FLATYPE profileclipboardtype;
+    private ProfilePhase profileclipboardphase;
+    private ProfileValue profileclipboardvalue;
+
 
     public static Virna7Application getInstance() {
 
@@ -55,5 +59,31 @@ public class Virna7Application  extends Application {
 
     public void setProfilemanager(ProfileManager profilemanager) {
         this.profilemanager = profilemanager;
+    }
+
+    public ProfileFlatEntry.FLATYPE getProfileclipboardtype() {
+        return profileclipboardtype;
+    }
+
+    public void setProfileclipboardtype(ProfileFlatEntry.FLATYPE profileclipboardtype) {
+        this.profileclipboardtype = profileclipboardtype;
+    }
+
+    public ProfilePhase getProfileclipboardphase() {
+        return profileclipboardphase;
+    }
+
+    public void setProfileclipboardphase(ProfilePhase profileclipboardphase) {
+        this.profileclipboardphase = profileclipboardphase;
+        profileclipboardphase.setPhasename("Copia de " + profileclipboardphase.getPhasename());
+    }
+
+    public ProfileValue getProfileclipboardvalue() {
+        return profileclipboardvalue;
+    }
+
+    public void setProfileclipboardvalue(ProfileValue profileclipboardvalue) {
+        this.profileclipboardvalue = profileclipboardvalue;
+        //profileclipboardvalue.set("Copia de " + profileclipboardvalue.getValuename());
     }
 }

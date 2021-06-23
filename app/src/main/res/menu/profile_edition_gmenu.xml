@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android2="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res-auto/android">
+
+    <item android2:title="Novo Item"
+        android2:id="@+id/profile_edition_menu_newaction" />
+    <item android2:title="Copiar"
+        android2:id="@+id/profile_edition_menu_copyaction"
+        android2:icon="?android:attr/actionModeCopyDrawable" />
+    <item android2:title="Inserir"
+        android2:id="@+id/profile_edition_menu_insertaction"
+        android2:icon="?attr/actionModePasteDrawable" />
+    <item android2:title="Adicionar"
+        android2:id="@+id/profile_edition_menu_appendaction" />
+    <item android2:title="Eliminar"
+        android2:id="@+id/profile_edition_menu_deleteaction" />
+    <item android2:title="Gravar Modificações"
+        android2:id="@+id/profile_edition_menu_saveaction" />
+    <item android2:title="Undo"
+        android2:id="@+id/profile_edition_menu_loadaction" />
+</menu>

@@ -9,15 +9,6 @@
     android:fitsSystemWindows="true"
     android:clickable="false">
 
-    <FrameLayout
-        android:id= "@+id/ui_container"
-        android:layout_width = "600dp"
-        android:layout_height = "match_parent"
-        android:layout_weight="1"
-        android:layout_gravity="right"
-        android:layout_margin="50dp" >
-
-    </FrameLayout>
 
 
     <GridLayout
@@ -30,7 +21,7 @@
         android:id="@+id/canvasgrid"
         android:paddingLeft="100dp"
         android:paddingRight="100dp"
-        android:elevation="2dp">
+        android:elevation="0dp">
 
         <ImageButton
             android:layout_width="@dimen/canvas_widget_width"
@@ -218,10 +209,82 @@
             android:textAllCaps="true"
             android:typeface="sans"
             android:hint="texto"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:elevation="0dp" />
 
 
     </GridLayout>
 
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/canvas_choice_root"
+        android:layout_width="700dp"
+        android:layout_height="400dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/canvas_choice"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/canvas_choice_tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Selecione Item :"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintLeft_toLeftOf="@+id/canvas_choice_rv_items"
+            app:layout_constraintRight_toRightOf="@+id/canvas_choice_rv_items"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/canvas_choice_bt_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:text="Editar"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <Button
+            android:id="@+id/canvas_choice_bt_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:text="Copiar"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/canvas_choice_bt_edit" />
+
+        <Button
+            android:id="@+id/canvas_choice_bt_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:text="Eliminar"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/canvas_choice_bt_copy" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/canvas_choice_rv_items"
+            android:layout_width="500dp"
+            android:layout_height="280dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.design.widget.CoordinatorLayout>

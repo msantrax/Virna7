@@ -13,10 +13,17 @@ public class ProfileValue {
     private double startvalue;
     private double stopvalue;
     private double extravalue;
+    private String stringvalue;
 
+    private ProfilePhase pp;
 
     public static enum TYPES {SPEED, SWEEP}
 
+
+    public static ProfileValue create(){
+        ProfileValue pv = new ProfileValue("Novo Comando", 0.0, 0.0, 0.0);
+        return pv;
+    }
 
     public ProfileValue(String stype, double startvalue, double stopvalue, double extravalue) {
         this.setStype(stype);
@@ -24,6 +31,11 @@ public class ProfileValue {
         this.setStopvalue(stopvalue);
         this.setExtravalue(extravalue);
     }
+
+
+    public void setParent(ProfilePhase pp) { this.pp = pp;};
+
+    public ProfilePhase getParent() { return pp;}
 
     public String getStype() {
         return stype;
@@ -53,16 +65,26 @@ public class ProfileValue {
 
     public void setExtravalue(double extravalue) {this.extravalue = extravalue;}
 
+    public String getStringvalue() {return stringvalue;}
+
+    public void setStringvalue(String stringvalue) {this.stringvalue = stringvalue;}
+
 
     public ProfileValue clone(){
-
         ProfileValue clone = new ProfileValue (stype,
                 startvalue,
                 stopvalue,
                 extravalue);
+        clone.setStringvalue(stringvalue);
         return clone;
     }
 
 
+    public void addFlatProfile (ArrayList<ProfileFlatEntry> flatentries, int index){
+
+        ProfileFlatEntry entry = new ProfileFlatEntry(stype, ProfileFlatEntry.FLATYPE.VALUE, index);
+        entry.setValue(this);
+        flatentries.add(entry);
+    }
 
 }

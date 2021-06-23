@@ -15,6 +15,7 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="OpusGraf">
@@ -96,7 +97,6 @@
         <item name="rangeTitleTextColor">@color/ap_black</item>
         <item name="legendTextColor">@color/ap_black</item>
     </style>
-
 
 
 </resources>

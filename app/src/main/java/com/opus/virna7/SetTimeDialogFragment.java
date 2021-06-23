@@ -34,14 +34,14 @@ public class SetTimeDialogFragment extends DialogFragment {
     private static final long milihour = miliminute * 60;
 
     private static boolean userelative;
-    private static int period;
+    private static long period;
 
     public SetTimeDialogFragment() {
         // Required empty public constructor
     }
 
 
-    public static  SetTimeDialogFragment newInstance(boolean ur, int p) {
+    public static  SetTimeDialogFragment newInstance(boolean ur, long p) {
         SetTimeDialogFragment fragment = new  SetTimeDialogFragment();
         userelative = ur;
         period = p;
@@ -109,10 +109,42 @@ public class SetTimeDialogFragment extends DialogFragment {
             }
         });
 
+        setElapseTime(getHour(), getMinute());
+
         return builder.create();
     }
 
-    public void setPeriod(int period) { this.period = period;}
+    //public void setPeriod(int period) { this.period = period;}
+
+    private int getHour(){
+
+        int hour = 0;
+
+        if (period > 60000){
+            hour = (int) (period / (60000 * 60));
+        }
+        return hour;
+    }
+
+    private int getMinute(){
+
+        int minute = 0;
+        long hours;
+        long minutes;
+
+        if (period < (60000 * 60) ){
+            minute = (int)(period / 60000);
+        }
+        else{
+            hours = period / (60000 * 60);
+            minutes = period - (hours * (60000 * 60));
+            minute = (int)(minutes / 60000);
+        }
+
+        return minute;
+    }
+
+
 
     public void setMode(boolean mode){
 
@@ -120,8 +152,8 @@ public class SetTimeDialogFragment extends DialogFragment {
 
         if (userelative){
             presenttime.setText("Defina o tempo de duração da atividade");
-            tp.setCurrentHour(0);
-            tp.setCurrentMinute(period);
+            tp.setCurrentHour(getHour());
+            tp.setCurrentMinute(getMinute());
             cbox.setChecked(true);
         }
         else{

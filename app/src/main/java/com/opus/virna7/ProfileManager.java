@@ -1,10 +1,13 @@
 package com.opus.virna7;
 
 import android.content.res.AssetManager;
+import android.os.Environment;
 import android.util.JsonReader;
+import android.util.JsonToken;
 import android.util.JsonWriter;
 import android.util.Log;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,15 +30,14 @@ public class ProfileManager {
 
     private static final String TAG = "ProfileMan";
 
-
     private static String filename = "profile.dat";
     private static com.opus.virna7.ProfileManager instance;
     private static AssetManager appassets;
+    private static Virna7Application virna;
 
-    private FileOutputStream fOut;
-    private OutputStreamWriter osw;
-    private FileInputStream fin;
-    private InputStreamReader isr;
+
+    private File pfile;
+
 
     private ArrayList<ProfileEntry> profiles;
 
@@ -44,34 +46,65 @@ public class ProfileManager {
         openProfile();
     }
 
-    public static com.opus.virna7.ProfileManager getInstance(AssetManager as){
+
+    public static com.opus.virna7.ProfileManager getInstance(AssetManager as, Virna7Application vapp ){
 
         if (instance == null){
             appassets = as;
+            virna = vapp;
             instance = new com.opus.virna7.ProfileManager();
         }
         return instance;
     }
 
 
+    public void openProfile(){
+        try {
+            pfile = new File(virna.getFilesDir(), "/" + "profiles.txt");
+            FileInputStream fin = new FileInputStream(pfile);
+            profiles = readJsonStream(fin);
+            Log.d(TAG, "Profile loaded from user data");
+        }
+        catch (IOException ioe) {
+            Log.e(TAG, "Failed to load profile : " + ioe.getMessage());
+            loadDefaults();
+        }
+    }
+
+    public void saveProfile(){
+        try {
+            FileOutputStream fOut = new FileOutputStream(pfile);
+            writeJsonStream(fOut, profiles);
+        }
+        catch (IOException ioe) {
+            Log.e(TAG, "Failed to save : " + ioe.getMessage());
+        }
+    }
+
     public void loadDefaults(){
 
         try {
-            //String[] assets = as.list("");
             InputStream is = appassets.open("profiles.json");
             profiles = readJsonStream(is);
             Log.d(TAG, "Profile loaded from assets");
+            saveProfile();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<ProfileEntry> getProfile() {
+
+
+    public ArrayList<ProfileEntry> getProfiles() {
         return profiles;
     }
 
 
-    public ProfileEntry findProfileByName ( String name){
+    public boolean hasProfile(String name){
+        return !(findProfileByName(name).getName().equals("ACP Default"));
+    }
+
+    public ProfileEntry findProfileByName (String name){
 
         for (ProfileEntry entry : profiles){
             if (entry.getName().equals(name)) return entry;
@@ -79,36 +112,22 @@ public class ProfileManager {
         return profiles.get(0);
     }
 
+    public ProfileEntry cloneProfileByName (String name) {
+        ProfileEntry ptemp = findProfileByName( name);
+        return ptemp.clone(false);
+    }
 
-    public void openProfile(){
+    public void setProfileByName (String name, ProfileEntry newprofile ) {
+        ProfileEntry ptemp = findProfileByName(name);
+        int index = profiles.indexOf(ptemp);
+        profiles.set(index, newprofile);
+    }
 
-        try {
-            fin = new FileInputStream("profiles.txt");
-            isr = new InputStreamReader(fin);
-            profiles = readJsonStream(fin);
-            Log.d(TAG, "Profile loaded from user data");
-        }
-        catch (IOException ioe) {
-            loadDefaults();
-            Log.e(TAG, "Failed to load profile : " + ioe.getMessage());
-        }
+    public void addProfile(ProfileEntry newprofile){
+        profiles.add(newprofile);
     }
 
 
-    public void initProfiles(){
-
-        try {
-            fOut = new FileOutputStream("profiles.txt");
-            osw = new OutputStreamWriter(fOut);
-            profiles = new ArrayList<>();
-            //fin = openRawResource(R.values.profiles.json)
-        }
-        catch (IOException ioe) {
-            Log.e(TAG, "Failed to load profile : " + ioe.getMessage());
-        }
-
-
-    }
 
     // ================================= Profile JSON Loading =====================================
     //=============================================================================================
@@ -153,11 +172,10 @@ public class ProfileManager {
             } else if (name.equals("created")) {
                 String sdate = reader.nextString();
                 created = new Date();
-            } else if (name.equals("phases")) {
+            } else if (name.equals("phases")  && reader.peek() != JsonToken.NULL) {
                 phases =  readPhasesArray(reader);
             } else if (name.equals("owner")) {
                 owner = reader.nextString();
-
             } else {
                 reader.skipValue();
             }
@@ -196,9 +214,8 @@ public class ProfileManager {
                 triggertype = reader.nextString();
             } else if (name.equals("triggervalue")) {
                 triggervalue = reader.nextDouble();
-            } else if (name.equals("values")) {
+            } else if (name.equals("values")  && reader.peek() != JsonToken.NULL) {
                 values =  readValuesArray(reader);
-
             } else {
                 reader.skipValue();
             }
@@ -254,6 +271,7 @@ public class ProfileManager {
     public void writeJsonStream(OutputStream out, ArrayList<ProfileEntry> profiles) throws IOException {
         JsonWriter writer = new JsonWriter(new OutputStreamWriter(out, "UTF-8"));
         writer.setIndent("  ");
+        writer.setLenient(true);
         writeProfilesArray(writer, profiles);
         writer.close();
     }
@@ -271,7 +289,14 @@ public class ProfileManager {
         writer.name("id").value(profentry.getId());
         writer.name("name").value(profentry.getName());
         writer.name("owner").value(profentry.getOwner());
-        if (!profentry.getPhases().isEmpty()) writePhasesArray (writer, profentry.getPhases());
+
+        if (!profentry.getPhases().isEmpty()){
+            writer.name("phases");
+            writePhasesArray(writer, profentry.getPhases());
+        }
+        else{
+            writer.name("phases").nullValue();
+        }
         writer.endObject();
     }
 
@@ -284,11 +309,18 @@ public class ProfileManager {
     }
 
     public void writeProfilePhase (JsonWriter writer, ProfilePhase profphase) throws IOException {
+
         writer.beginObject();
         writer.name("phasename").value(profphase.getPhasename());
         writer.name("triggertype").value(profphase.getTriggername());
         writer.name("triggervalue").value(profphase.getTriggervalue());
-        if (!profphase.getValues().isEmpty()) writeValuesArray (writer, profphase.getValues());
+        if (!profphase.getValues().isEmpty()) {
+            writer.name("values");
+            writeValuesArray (writer, profphase.getValues());
+        }
+        else{
+            writer.name("values").nullValue();
+        }
         writer.endObject();
     }
 

@@ -107,13 +107,10 @@ public class NavActivity extends AppCompatActivity {
 
         Log.i(TAG, "Acionando run com :" + profile.getName());
         setCanvas (true, button);
-
-        //while(!canvas_coordinator.isCanvasready()){};
         Intent i = new Intent("com.opus.virna7.RunActivity");
-        //Intent i = new Intent("com.opus.virna7.ProfileItemListActivity");
-
-        //i.putExtra("profile", profile.getName());
+        i.putExtra("profile", profile.getName());
         startActivity(i);
+
 
     }
 
@@ -131,6 +128,11 @@ public class NavActivity extends AppCompatActivity {
             startActivity(new Intent("com.opus.virna7.Support3"));
         }
         else if (button_index == 0 ){
+
+//            Intent i = new Intent("com.opus.virna7.ProfileItemListActivity");
+//            i.putExtra("profile", "ACP Default 2");
+//            startActivity(i);
+
             if (exploded) {
                 canvas_coordinator.configChoicePanel(CanvasCoordinator.paneltypes.OPERATIONSPANEL);
                 setCanvas(false, 0);

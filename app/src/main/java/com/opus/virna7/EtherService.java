@@ -93,6 +93,8 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
         char token;
         char[] chars = new char[150];
 
+        //Log.d(TAG, "Loading status");
+
         if (cmd==1){
             for (int i = 12; i < 162; i++) {
                 token = (char)mes[i];
@@ -108,7 +110,6 @@ public class EtherService extends Service implements SharedPreferences.OnSharedP
         else{
             payload ="";
         }
-
 
         String[] s_slots = payload.split(",");
         for (int j = 0; j < 10; j++) {

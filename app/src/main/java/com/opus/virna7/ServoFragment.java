@@ -257,12 +257,13 @@ public class ServoFragment extends Fragment implements SeekBar.OnSeekBarChangeLi
 
         double val;
 
-        val = etherservice.getStatusSlot(0);
-        tv_servovel.setText(String.format(Locale.ENGLISH, "%5.2f", val));
+        if (etherservice !=null){
+            val = etherservice.getStatusSlot(0);
+            tv_servovel.setText(String.format(Locale.ENGLISH, "%5.2f", val));
 
-        val = etherservice.getStatusSlot(1);
-        tv_servogamma.setText(String.format(Locale.ENGLISH, "%5.2f", val));
-
+            val = etherservice.getStatusSlot(1);
+            tv_servogamma.setText(String.format(Locale.ENGLISH, "%5.2f", val));
+        }
     }
 
     @Override

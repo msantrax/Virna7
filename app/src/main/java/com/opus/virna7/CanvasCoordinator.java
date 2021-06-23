@@ -3,6 +3,7 @@ package com.opus.virna7;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -87,12 +88,14 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
         }
 
         choicelist.setLayoutManager(new LinearLayoutManager(nav));
-        adapter = new CanvasChoiceRecyclerViewAdapter(virna.getProfilemanager().getProfile(), this);
+        adapter = new CanvasChoiceRecyclerViewAdapter(virna.getProfilemanager().getProfiles(), this);
         choicelist.setAdapter(adapter);
 
         btedit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.i("L17", "Edit clicked");
+            //Log.i("L17", "Edit clicked");
+            startProfileEdition();
+
             }
         });
 
@@ -100,8 +103,8 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
             public void onClick(View v) {
                 Log.i("L17", "Copy clicked");
                 if (selectedprofile != null){
-                    virna.getProfilemanager().getProfile().add(selectedprofile.mItem.clone());
-                    adapter.notifyItemInserted(virna.getProfilemanager().getProfile().size());
+                    virna.getProfilemanager().getProfiles().add(selectedprofile.mItem.clone(true));
+                    adapter.notifyItemInserted(virna.getProfilemanager().getProfiles().size());
                 }
             }
         });
@@ -111,13 +114,20 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
                 Log.i("L17", "Delete clicked");
                 if (selectedprofile != null){
                     int position = selectedprofile.getAdapterPosition();
-                    virna.getProfilemanager().getProfile().remove(position);
+                    virna.getProfilemanager().getProfiles().remove(position);
                     adapter.notifyItemRemoved(position);
                 }
             }
         });
 
     }
+
+    public void startProfileEdition(){
+        Intent i = new Intent("com.opus.virna7.ProfileItemListActivity");
+        i.putExtra("profile", selectedprofile.mItem.getName());
+        nav.startActivity(i);
+    }
+
 
     public int getButtonIndex(int id){
 
@@ -137,8 +147,6 @@ public class CanvasCoordinator implements Animator.AnimatorListener{
         Log.i("L17", "Choice clicked @" + holder.mItem.getName());
 
         if (exclude_widget == 1){
-
-
 
             if (selectedprofile != null && (selectedprofile.mItem.getId() != holder.mItem.getId())) selectedprofile.setSelect(false);
             if (selectedprofile == null || (selectedprofile.mItem.getId() != holder.mItem.getId())) {

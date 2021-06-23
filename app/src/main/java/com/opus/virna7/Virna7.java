@@ -138,7 +138,7 @@ public class Virna7 extends AppCompatActivity {
 
         if (etherserviceBinder == null){ startEtherService();}
 
-        virna.setProfilemanager(ProfileManager.getInstance(this.getAssets()));
+        virna.setProfilemanager(ProfileManager.getInstance(this.getAssets(), virna));
 
     }
 
@@ -159,6 +159,7 @@ public class Virna7 extends AppCompatActivity {
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
+
         super.onPostCreate(savedInstanceState);
 
         AnimatorSet animset = new AnimatorSet();
@@ -359,7 +360,7 @@ public class Virna7 extends AppCompatActivity {
                 dlgFragment.show(getFragmentManager(), "dialog");
             }
             else if (spwd.equalsIgnoreCase("0")){
-                startActivity(new Intent(Virna7.this, RunActivity.class));
+                startActivity(new Intent(Virna7.this, RunSimpleActivity.class));
             }
             else if (spwd.equalsIgnoreCase("3055")){
                 //SMTraffic smt = new SMTraffic(EtherService.CMDS.LOADSTATE, 0, EtherService.STATES.ATTACH);
@@ -578,8 +579,6 @@ public class Virna7 extends AppCompatActivity {
         //etherserviceBinder.doComand(EtherService.STATES.ATTACH, 0);
         //startActivity(new Intent("com.opus.virna7.Support3"));
         //startActivity(new Intent("com.opus.virna7.SettingsActivity"));
-
-
         startActivity(new Intent(Virna7.this, NavActivity.class));
 
     }
@@ -589,6 +588,9 @@ public class Virna7 extends AppCompatActivity {
     private void show() {
 
         boolean autenticate = preferences.getBoolean(getString(R.string.pref_main_k_autenticate), false);
+
+        //startActivity(new Intent(Virna7.this, RunSimpleActivity.class));
+
 
         if (autenticate) {
             showKeypad(true);
